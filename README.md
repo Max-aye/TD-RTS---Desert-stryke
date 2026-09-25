@@ -1,6 +1,6 @@
 <div align="right">
 
-[🇷🇺 Русская версия](./README.ru.md) <img src="./assets/language-arrow.svg" width="32" alt="переключить язык" /> [🇬🇧 English version](./README.md)
+[🇷🇺 Русская версия](./README.ru.md) · [🇬🇧 English version](./README.md)
 
 </div>
 
@@ -8,25 +8,19 @@
 
 # TERRA 2136 • Desert Stryke
 
-<p align="center">
-  <img src="./docs/before-after-mobile.png" alt="TERRA 2136 — Desert Stryke" width="900" />
-</p>
+<p><strong>Offline browser tactical RTS / tower offense in one HTML file.</strong></p>
 
-<p align="center">
-  <img alt="Status" src="https://img.shields.io/badge/status-active%20development-0A8F7A?style=for-the-badge" />
+<p>
+  <img alt="Status" src="https://img.shields.io/badge/status-v0.99.0%20%2F%20active%20development-0A8F7A?style=for-the-badge" />
   <img alt="Platform" src="https://img.shields.io/badge/platform-browser%20%2F%20offline-FFB703?style=for-the-badge" />
   <img alt="Render" src="https://img.shields.io/badge/render-WebGL2-1E90FF?style=for-the-badge" />
   <img alt="Build" src="https://img.shields.io/badge/build-single%20HTML-E76F51?style=for-the-badge" />
 </p>
 
-### Offline browser strategy prototype with a full game loop, UI systems, and QA automation
-
-A self-contained tactical RTS built in a single HTML file. The project focuses on a clean gameplay loop, mobile-first UX, strong visual identity, and maintainable architecture without external dependencies.
-
-<p align="center">
-  <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Play%20Now-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Play now" /></a>
-  <a href="./TERRA2136_PLAY_v0.99.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.99.0-7AE582?style=for-the-badge" alt="Playable build" /></a>
-  <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Roadmap-9AA0FF?style=for-the-badge" alt="Roadmap" /></a>
+<p>
+  <a href="./index.html">▶ Play now</a> ·
+  <a href="./TERRA2136_PLAY_v0.99.0.html">⬇ Playable build v0.99.0</a> ·
+  <a href="./docs/ROADMAP.md">🗺 Roadmap</a>
 </p>
 
 </div>
@@ -35,41 +29,29 @@ A self-contained tactical RTS built in a single HTML file. The project focuses o
 
 ## Overview
 
-TERRA 2136 is a compact tactical strategy prototype set on a hostile Martian frontier. The game combines:
+TERRA 2136 is a self-contained tactical strategy game set on a hostile Martian frontier. It combines real-time tower-defense/RTS combat, campaign missions, upgrades, rewards, local progression, responsive mobile-first UI, and WebGL2 rendering. The playable release is a single offline HTML file: no backend, account, CDN, or network connection is required.
 
-- real-time tower defense / RTS combat;
-- campaign progression and map progression;
-- modular upgrades, rewards, and player systems;
-- mobile-first interface design and responsive layouts;
-- WebGL2 rendering with a single offline build.
+## Current release: v0.99.0
 
-This project was designed as both a playable game and a technical showcase: it demonstrates how to structure a browser game with split source files, deterministic simulation logic, UI engineering, and QA validation within a single repository.
+The current build includes:
 
----
+- **Battle HUD 0.96.0:** no battle text below 10 px on tested viewports, touch targets at least 44 px, and a three-step first-battle guide: build → upgrade → support.
+- **Unit presentation 0.97.x:** screen-size-based detail selection, an 8× anisotropic-filtering ceiling, acceleration/slope lean, turn banking, and device-scaled model textures.
+- **Rewards 0.98.0:** repeat wins pay 35% of the first-clear reward for the first five daily repeats; field alloy finds increased from 3–7 to 6–12.
+- **Collection portraits 0.98.1:** dedicated portraits for Grenadier and Missile cards; shared portraits remain only where two loadouts use the same model.
+- **Maintenance 0.99.0:** 27 provably dead CSS blocks removed and 36 derived crate-pool tables consolidated into one equivalent table. Simulation, balance, and save format are unchanged.
 
-## Why this project stands out
-
-| Area | What it demonstrates |
-|---|---|
-| Gameplay systems | Tactical combat, resource flow, progression, and decision-making under time pressure |
-| Architecture | Split source structure rebuilt into one distributable HTML artifact |
-| UI / UX | Mobile-first interface, readable controls, compact action loops, and screen flow |
-| Technical quality | QA automation, script validation, and repeatable build workflows |
-| Presentation | Distinct visual identity and polished public-facing project page |
-
----
+The full version history is in [`docs/CHANGELOG.md`](./docs/CHANGELOG.md).
 
 ## Quick start
 
 ### Play immediately
 
-1. Open [`index.html`](./index.html).
-2. Launch the game from the landing page.
-3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.99.0.html`](./TERRA2136_PLAY_v0.99.0.html).
+1. Open [`index.html`](./index.html), or open [`TERRA2136_PLAY_v0.99.0.html`](./TERRA2136_PLAY_v0.99.0.html) directly.
+2. Start a battle from HQ.
+3. Build a defense, upgrade it, use support, and return to HQ to review progression.
 
-No back-end, account system, or external CDN is required.
-
-### Local HTTP preview
+### Local preview
 
 ```bash
 python3 -m http.server 8000
@@ -77,149 +59,72 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000/>.
 
----
+## Build and validation
+
+Requirements: Python 3.11+, Node.js 20+, Git, and Playwright for browser QA.
+
+```bash
+python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
+python3 tools/check.py dist/TERRA2136_PLAY.html
+
+python3 -m pip install playwright
+python3 -m playwright install chromium
+python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
+python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports mobile
+```
+
+Release and regression checks:
+
+```bash
+python3 qa/campaign.py TERRA2136_PLAY_v0.99.0.html
+python3 qa/perf.py TERRA2136_PLAY_v0.99.0.html
+```
+
+The campaign gate passes M01–M05 without console errors. The performance script is a regression comparison running on SwiftShader; the remaining 1.0.0 gate still requires a 30+ FPS measurement on a real phone in a 220-point battle.
 
 ## Project structure
 
 ```text
 .
-├── index.html                        # landing / launch page
-├── TERRA2136_PLAY_v0.99.0.html       # playable offline build
-├── parts/                            # source files used to rebuild the game
-│   ├── markup/                      # HTML shell, battle screen, menu frames
-│   ├── css/                         # UI styling layers and polish rules
-│   ├── ui/                          # navigation, screens, HUD, input logic
-│   ├── game/                        # simulation, campaign logic, progression
-│   ├── render/                      # render pipeline and visual effects
-│   ├── engine/                      # runtime and game loop infrastructure
-│   └── data/                        # configuration, assets, embedded resources
-├── tools/                            # split, build, syntax-check, patch utilities
-├── qa/                               # automated UI and smoke-test validation
-├── patches/                          # versioned patch workflow and revision history
-├── docs/                             # roadmap, changelog, audit, game notes
-├── CLAUDE.md                         # project rules and invariants
-├── PROMPTS.md                        # task framing and goal templates
-├── REWARDS_REVIEW.md                 # economy and reward analysis
-├── README.md                         # English project overview
-├── README.ru.md                      # Russian project overview
-├── .github/                          # GitHub workflow and repository config
-└── .claude/                          # local assistant/project guidance files
+├── index.html                         # landing page and launch flow
+├── TERRA2136_PLAY_v0.99.0.html       # current offline playable build
+├── parts/                             # modular source used to build the HTML
+│   ├── markup/ css/ ui/               # shell, styles, screens and input
+│   ├── game/ engine/ render/           # simulation, runtime and WebGL2 rendering
+│   └── data/                          # configuration and embedded assets
+├── tools/                             # build, split, checks and analysis tools
+├── qa/                                # UI, campaign and performance checks
+├── patches/                           # versioned, idempotent patch specifications
+└── docs/                              # roadmap, changelog, audit and asset notes
 ```
-
----
-
-## Technical highlights
-
-### Game systems
-
-- deterministic battle simulation with fixed-step logic;
-- campaign flow, progression, and mission structure;
-- local persistence and resource transactions;
-- mobile-first UI with responsive behavior for different screen sizes;
-- single-file offline delivery without external runtime dependencies.
-
-### Engineering discipline
-
-- source split into modular parts before final build;
-- automated syntax checks through `node --check`;
-- Playwright-based interface validation and smoke tests;
-- versioned patch workflow for controlled iteration;
-- documentation-first development with design notes and roadmap tracking.
-
----
-
-## Build and validation
-
-### Requirements
-
-- Python 3.11+
-- Node.js 20+
-- Git
-- Playwright for UI automation
-
-### Build the game
-
-```bash
-python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
-```
-
-### Rebuild from a split HTML file
-
-```bash
-python3 tools/split.py TERRA2136_PLAY_v0.99.0.html parts/
-```
-
-### Syntax validation
-
-```bash
-python3 tools/check.py dist/TERRA2136_PLAY.html
-```
-
-### UI QA / smoke test
-
-```bash
-python3 -m pip install playwright
-python3 -m playwright install chromium
-
-python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
-python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports mobile
-```
-
-This validates menu flow, touch targets, overflow, visual readability, and battle startup stability.
-
----
 
 ## Roadmap
 
 | Version | Focus | Status |
 |---|---|---|
-| `0.95.0` | UI clarity, icons, layout polish | ✅ Complete |
-| `0.96.0` | Combat HUD improvements | ✅ Complete |
-| `0.97.0` | Unit models: detail, textures, motion | ✅ Complete |
-| `0.98.0` | Reward progression tuning | ✅ Complete |
+| `0.95.0` | HQ order, icons, menu readability | ✅ Complete |
+| `0.96.0` | Battle HUD and mobile readability | ✅ Complete |
+| `0.97.0` | Unit models, textures and motion | ✅ Complete |
+| `0.98.0` | Repeat rewards and field loot | ✅ Complete |
 | `0.98.1` | Collection portraits | ✅ Complete |
-| `0.99.0` | Styles and tech debt | ✅ Complete |
-| `1.0.0` | Release | 🔧 Planned |
-| `0.98.1` | Map visual polish | 🗺️ Planned |
-| `1.0.0` | Release-ready milestone | 🎯 Target |
+| `0.99.0` | Styles and technical debt | ✅ Complete |
+| `1.0.0` | Release milestone | 🔧 Real-device FPS validation remaining |
 
-See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for detailed milestones.
-
----
+See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for acceptance criteria and the phone test procedure.
 
 ## Documentation
 
-- [`docs/ROADMAP.md`](./docs/ROADMAP.md) — project route and release planning
-- [`docs/CHANGELOG.md`](./docs/CHANGELOG.md) — version history and updates
+- [`docs/ROADMAP.md`](./docs/ROADMAP.md) — milestones and release gates
+- [`docs/CHANGELOG.md`](./docs/CHANGELOG.md) — version history
 - [`docs/AUDIT.md`](./docs/AUDIT.md) — UX and technical audit
-- [`docs/REWARDS_REVIEW.md`](./docs/REWARDS_REVIEW.md) — economy and progression analysis
-- [`docs/RESEARCH_NOTES.md`](./docs/RESEARCH_NOTES.md) — research and design notes
-- [`CLAUDE.md`](./CLAUDE.md) — development rules and invariants
-- [`PROMPTS.md`](./PROMPTS.md) — task framing and execution patterns
-
----
-
-## Portfolio angle
-
-This project is a strong portfolio example because it combines gameplay design and software engineering in a compact, demonstrable package:
-
-- playable and testable browser game;
-- clear code structure and build pipeline;
-- systems thinking across UI, progression, and logic;
-- attention to UX and readability;
-- automated verification instead of assumptions.
-
-It is especially suitable for discussing software craftsmanship, product iteration, and building a game from a focused prototype to a more polished experience.
+- [`docs/ASSETS.md`](./docs/ASSETS.md) — embedded assets and collection portraits
+- [`REWARDS_REVIEW.md`](./REWARDS_REVIEW.md) — economy analysis and decisions
 
 ---
 
 <div align="center">
 
-### Explore the project
-
 [**▶ Open the game**](./index.html) · [**⬇ Playable build**](./TERRA2136_PLAY_v0.99.0.html) · [**🗺 Roadmap**](./docs/ROADMAP.md)
-
-<br>
 
 <strong>TERRA 2136 • Desert Stryke</strong>
 
