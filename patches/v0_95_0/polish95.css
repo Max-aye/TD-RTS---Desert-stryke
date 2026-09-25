@@ -1,0 +1,60 @@
+
+/* POLISH-095. Loaded after every earlier sheet, so equal specificity wins by order.
+ * Presentation only: HQ reading order, first-screen launch on phones, one nav icon family,
+ * scrollable filter rows, readable reward calendar, 44 px touch targets. */
+:root{--tap95:44px}
+
+/* HQ: next step -> launch -> long tracks -> utilities (see HQ-095 in ui/controller.js) */
+#menu-content .hq-tracks95{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:14px;margin:18px 0 0}
+#menu-content .hq-tracks95>section{margin:0;min-width:0}
+#menu-content .hq-utility95{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px;margin:14px 0 20px;align-items:stretch}
+#menu-content .hq-utility95>*{margin:0;width:auto;min-width:0;max-width:none}
+#menu-content .hq-utility95>.aar-entry{display:flex;align-items:center;gap:12px;min-height:64px;padding:12px 16px;text-align:left;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(21,54,63,.9),rgba(7,27,35,.95))}
+#menu-content .hq-utility95>.aar-entry>span{display:grid;gap:2px;flex:1;min-width:0}
+#menu-content .hq-utility95>.aar-entry>span small{font-size:12px}
+#menu-content .hq-utility95>.aar-entry>em{font-style:normal;color:var(--muted)}
+.g91-card:has(.g91-actions [data-e89-route="gifts"]) .g91-daily{display:none}
+
+/* Primary navigation: one drawn icon family, tinted fill on the current tab */
+#menu-nav .ti95{width:24px;height:24px;flex:0 0 24px}
+#menu-nav .ti95 .fill{fill:none;transition:fill-opacity .15s}
+#menu-nav button[aria-current=page] .ti95 .fill{fill:currentColor;fill-opacity:.2}
+
+/* Boot emblem */
+#boot .brand-mark95{width:112px;height:112px;border:0;box-shadow:0 0 90px #4ae2da1f;border-radius:26px;font-size:0}
+#boot .brand-mark95 .emblem95{width:100%;height:100%;display:block}
+
+/* Readability floor: secondary menu text was 7–9 px (QA tiny_text lint) */
+#menu-content small,#menu-content em,#menu-content .eyebrow,#menu-content .j88-kicker,#menu-content .e89-kicker{font-size:11px;letter-spacing:.06em}
+#menu-content h1 em,#menu-content h2 em,#menu-content h3 em{font-size:inherit;letter-spacing:inherit}
+#menu-content .j88-day>header{font-size:11px}
+#menu-content .j88-day>header>b{font-size:10px;padding:3px 5px}
+#menu-content .j88-day>small,#menu-content .campaign56-section-label{font-size:11px}
+
+@media (max-width:700px){
+ /* Launch reachable on the first screen: the hero becomes one line */
+ #menu-content .command-hero{min-height:0;padding:6px 2px 2px}
+ #menu-content .command-hero h1{font-size:28px;line-height:1.05;margin:4px 0 6px;letter-spacing:.07em;white-space:nowrap}
+ #menu-content .command-hero h1 br{display:none}
+ #menu-content .command-hero h1 em{margin-left:.28em}
+ #menu-content .command-hero .eyebrow{font-size:10px}
+ #menu-content .command-hero .hero-tags{gap:12px;font-size:12px}
+ #menu-content .g91-card p{font-size:13px;line-height:1.35}
+ #menu-content .g91-actions{display:flex;flex-wrap:wrap;gap:8px}
+ #menu-content .g91-actions button{min-height:var(--tap95);flex:1 1 auto}
+
+ /* Filter rows scroll sideways instead of wrapping into three lines */
+ #menu-content .collection09 .loadouts,#menu-content .collection09 .roster-filters{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;gap:8px;padding-bottom:2px}
+ #menu-content .collection09 .loadouts::-webkit-scrollbar,#menu-content .collection09 .roster-filters::-webkit-scrollbar{display:none}
+ #menu-content .collection09 .loadouts>button,#menu-content .collection09 .roster-filters>button{flex:0 0 auto;min-height:var(--tap95)}
+
+ /* Reward calendar: amounts in a two-column grid, labels live in the tooltip and the hero row */
+ #menu-content .j88-week-grid .j88-day .j88-rewards{display:grid;grid-template-columns:1fr 1fr;gap:6px 6px;margin:8px 0}
+ #menu-content .j88-week-grid .j88-day .j88-reward{min-height:0;gap:4px;align-items:center}
+ #menu-content .j88-week-grid .j88-day .j88-reward small{display:none}
+ #menu-content .j88-week-grid .j88-day .j88-reward b{font-size:13px}
+ #menu-content .j88-week-grid .j88-day .j88-resource-icon{width:22px;height:22px;flex:0 0 22px}
+
+ #menu-content .difficulty>button{min-height:var(--tap95)}
+}
+@media (prefers-reduced-motion:reduce){#menu-nav .ti95 .fill{transition:none}}

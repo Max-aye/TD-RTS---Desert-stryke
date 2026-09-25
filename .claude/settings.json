@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 tools/*)",
+      "Bash(python3 qa/*)",
+      "Bash(py tools/*)",
+      "Bash(py qa/*)",
+      "Bash(node --check *)",
+      "Bash(git diff *)",
+      "Bash(git status *)"
+    ],
+    "deny": [
+      "Edit(parts/data/assets-models.js)",
+      "Write(parts/data/assets-models.js)",
+      "Edit(parts/data/mortarch-models.js)",
+      "Write(parts/data/mortarch-models.js)",
+      "Edit(parts/data/ui-images.js)",
+      "Write(parts/data/ui-images.js)",
+      "Edit(parts/data/texture-data.js)",
+      "Write(parts/data/texture-data.js)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH": "1",
+    "CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS": "4"
+  }
+}
