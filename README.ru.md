@@ -23,7 +23,7 @@
 
 <p align="center">
   <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Играть%20сейчас-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Играть сейчас" /></a>
-  <a href="./TERRA2136_PLAY_v0.99.0.html"><img src="https://img.shields.io/badge/⬇%20Игровая%20сборка-v0.99.0-7AE582?style=for-the-badge" alt="Игровая сборка" /></a>
+  <a href="./TERRA2136_PLAY_v0.99.1.html"><img src="https://img.shields.io/badge/⬇%20Игровая%20сборка-v0.99.1-7AE582?style=for-the-badge" alt="Игровая сборка" /></a>
   <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Дорожная%20карта-9AA0FF?style=for-the-badge" alt="Дорожная карта" /></a>
 </p>
 
@@ -57,7 +57,7 @@
 3. Запустите бой, поставьте оборонный модуль и переживите первую угрозу.
 4. Вернитесь в штаб, изучите отчёт и подготовьте следующий выход.
 
-Готовая сборка доступна здесь: [`TERRA2136_PLAY_v0.99.0.html`](./TERRA2136_PLAY_v0.99.0.html).
+Готовая сборка доступна здесь: [`TERRA2136_PLAY_v0.99.1.html`](./TERRA2136_PLAY_v0.99.1.html).
 
 **Ничего устанавливать не нужно:** backend, аккаунт, интернет и внешний CDN не требуются.
 
@@ -73,7 +73,7 @@
 | Адаптивный UI для телефона и desktop | `node --check` для всех скриптов сборки |
 | Нижняя навигация с единым набором иконок | Playwright smoke-тесты меню и боя |
 
-### Что изменилось в v0.99.0
+### Что изменилось в v0.99.1
 
 Последние обновления — читаемость боя и работа над моделями юнитов:
 
@@ -134,7 +134,7 @@ python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
 ### Разделить готовый HTML на исходники
 
 ```bash
-python3 tools/split.py TERRA2136_PLAY_v0.99.0.html parts/
+python3 tools/split.py TERRA2136_PLAY_v0.99.1.html parts/
 ```
 
 ### Проверить синтаксис
@@ -162,7 +162,7 @@ python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports
 ```text
 .
 ├── index.html                         # landing page и запуск игры
-├── TERRA2136_PLAY_v0.99.0.html        # готовая офлайн-сборка
+├── TERRA2136_PLAY_v0.99.1.html        # готовая офлайн-сборка
 ├── parts/                              # исходники для повторной сборки
 │   ├── markup/                         # HTML-каркас и модальные экраны
 │   ├── css/                            # слои стилей и UI-полировка
@@ -229,7 +229,7 @@ TERRA 2136 удобно смотреть как на законченный ве
 
 ### Войти в проект
 
-[**▶ Открыть игру**](./index.html) · [**⬇ Скачать сборку**](./TERRA2136_PLAY_v0.99.0.html) · [**🗺 Смотреть roadmap**](./docs/ROADMAP.md)
+[**▶ Открыть игру**](./index.html) · [**⬇ Скачать сборку**](./TERRA2136_PLAY_v0.99.1.html) · [**🗺 Смотреть roadmap**](./docs/ROADMAP.md)
 
 <br>
 
