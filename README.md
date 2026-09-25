@@ -1,3 +1,9 @@
+<div align="right">
+
+[🇷🇺 Русская версия](./README.ru.md) <img src="./assets/language-arrow.svg" width="32" alt="переключить язык" /> [🇬🇧 English version](./README.md)
+
+</div>
+
 <div align="center">
 
 # TERRA 2136 • Desert Stryke
@@ -18,9 +24,9 @@
 A self-contained tactical RTS built in a single HTML file. The project focuses on a clean gameplay loop, mobile-first UX, strong visual identity, and maintainable architecture without external dependencies.
 
 <p align="center">
-  <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Play%20Now-FFD166?style=for-the-badge&logo=play&logoColor=111827" /></a>
-  <a href="./TERRA2136_PLAY_v0.95.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.95.0-7AE582?style=for-the-badge" /></a>
-  <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Roadmap-9AA0FF?style=for-the-badge" /></a>
+  <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Play%20Now-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Play now" /></a>
+  <a href="./TERRA2136_PLAY_v0.95.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.95.0-7AE582?style=for-the-badge" alt="Playable build" /></a>
+  <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Roadmap-9AA0FF?style=for-the-badge" alt="Roadmap" /></a>
 </p>
 
 </div>
@@ -31,11 +37,11 @@ A self-contained tactical RTS built in a single HTML file. The project focuses o
 
 TERRA 2136 is a compact tactical strategy prototype set on a hostile Martian frontier. The game combines:
 
-- real-time tower defense / RTS combat
-- campaign progression and map progression
-- modular upgrades, rewards, and player systems
-- mobile-first interface design and responsive layouts
-- WebGL2 rendering with a single offline build
+- real-time tower defense / RTS combat;
+- campaign progression and map progression;
+- modular upgrades, rewards, and player systems;
+- mobile-first interface design and responsive layouts;
+- WebGL2 rendering with a single offline build.
 
 This project was designed as both a playable game and a technical showcase: it demonstrates how to structure a browser game with split source files, deterministic simulation logic, UI engineering, and QA validation within a single repository.
 
@@ -57,11 +63,11 @@ This project was designed as both a playable game and a technical showcase: it d
 
 ### Play immediately
 
-1. Open [`index.html`](./index.html)
-2. Launch the game from the landing page
-3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.95.0.html`](./TERRA2136_PLAY_v0.95.0.html)
+1. Open [`index.html`](./index.html).
+2. Launch the game from the landing page.
+3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.95.0.html`](./TERRA2136_PLAY_v0.95.0.html).
 
-No back-end, no account system, and no external CDN are required.
+No back-end, account system, or external CDN is required.
 
 ### Local HTTP preview
 
@@ -69,11 +75,7 @@ No back-end, no account system, and no external CDN are required.
 python3 -m http.server 8000
 ```
 
-Then open:
-
-```text
-http://localhost:8000/
-```
+Then open <http://localhost:8000/>.
 
 ---
 
@@ -82,7 +84,7 @@ http://localhost:8000/
 ```text
 .
 ├── index.html                        # landing / launch page
-├── TERRA2136_PLAY_v0.95.0.html       # Playable offline build
+├── TERRA2136_PLAY_v0.95.0.html       # playable offline build
 ├── parts/                            # source files used to rebuild the game
 │   ├── markup/                      # HTML shell, battle screen, menu frames
 │   ├── css/                         # UI styling layers and polish rules
@@ -90,15 +92,16 @@ http://localhost:8000/
 │   ├── game/                        # simulation, campaign logic, progression
 │   ├── render/                      # render pipeline and visual effects
 │   ├── engine/                      # runtime and game loop infrastructure
-│   └── data/                        # configuration, assets, and embedded resources
-├── tools/                            # split, build, syntax-check, and patch utilities
+│   └── data/                        # configuration, assets, embedded resources
+├── tools/                            # split, build, syntax-check, patch utilities
 ├── qa/                               # automated UI and smoke-test validation
 ├── patches/                          # versioned patch workflow and revision history
 ├── docs/                             # roadmap, changelog, audit, game notes
 ├── CLAUDE.md                         # project rules and invariants
 ├── PROMPTS.md                        # task framing and goal templates
 ├── REWARDS_REVIEW.md                 # economy and reward analysis
-├── README.md                         # public project overview
+├── README.md                         # English project overview
+├── README.ru.md                      # Russian project overview
 ├── .github/                          # GitHub workflow and repository config
 └── .claude/                          # local assistant/project guidance files
 ```
@@ -109,19 +112,19 @@ http://localhost:8000/
 
 ### Game systems
 
-- deterministic battle simulation with fixed-step logic
-- campaign flow, progression, and mission structure
-- local persistence and resource transactions
-- mobile-first UI with responsive behavior for different screen sizes
-- single-file offline delivery without external runtime dependencies
+- deterministic battle simulation with fixed-step logic;
+- campaign flow, progression, and mission structure;
+- local persistence and resource transactions;
+- mobile-first UI with responsive behavior for different screen sizes;
+- single-file offline delivery without external runtime dependencies.
 
 ### Engineering discipline
 
-- source split into modular parts before final build
-- automated syntax checks through `node --check`
-- Playwright-based interface validation and smoke tests
-- versioned patch workflow for controlled iteration
-- documentation-first development process with design notes and roadmap tracking
+- source split into modular parts before final build;
+- automated syntax checks through `node --check`;
+- Playwright-based interface validation and smoke tests;
+- versioned patch workflow for controlled iteration;
+- documentation-first development with design notes and roadmap tracking.
 
 ---
 
@@ -196,11 +199,11 @@ See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for detailed milestones.
 
 This project is a strong portfolio example because it combines gameplay design and software engineering in a compact, demonstrable package:
 
-- playable and testable browser game
-- clear code structure and build pipeline
-- systems thinking across UI, progression, and logic
-- attention to UX and readability
-- automated verification instead of assumptions
+- playable and testable browser game;
+- clear code structure and build pipeline;
+- systems thinking across UI, progression, and logic;
+- attention to UX and readability;
+- automated verification instead of assumptions.
 
 It is especially suitable for discussing software craftsmanship, product iteration, and building a game from a focused prototype to a more polished experience.
 
