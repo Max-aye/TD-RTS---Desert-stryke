@@ -1,0 +1,61 @@
+{
+ "game": "TERRA2136_PLAY.html",
+ "missions": [
+  {
+   "mission": "M01",
+   "ticks": 3292,
+   "minutes": 2.7,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 0,
+   "launched": "M01",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 16.4,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M02",
+   "ticks": 3000,
+   "minutes": 2.5,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 0,
+   "launched": "M02",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 11.7,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M03",
+   "ticks": 2939,
+   "minutes": 2.4,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 3,
+   "launched": "M03",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 10.4,
+   "console_errors": [],
+   "page_errors": []
+  }
+ ],
+ "problems": [],
+ "result": "PASS"
+}

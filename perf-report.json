@@ -1,0 +1,148 @@
+{
+ "game": "TERRA2136_PLAY_v0.99.0.html",
+ "size": "army",
+ "difficulty": "normal",
+ "built": 3,
+ "samples": [
+  {
+   "msPerTick": 6.2683333333333335,
+   "ticks": 300,
+   "units": 4,
+   "structures": 7,
+   "population": [
+    1
+   ],
+   "parts": 173,
+   "actors": 4,
+   "drawCalls": 24,
+   "triangles": 46864,
+   "poseMs": 11.200000001117587,
+   "submitMs": 1741.5999999996275
+  },
+  {
+   "msPerTick": 3.9116666666666666,
+   "ticks": 600,
+   "units": 18,
+   "structures": 10,
+   "population": [
+    1
+   ],
+   "parts": 663,
+   "actors": 16,
+   "drawCalls": 25,
+   "triangles": 93572,
+   "poseMs": 10.400000000372529,
+   "submitMs": 956.1999999992549
+  },
+  {
+   "msPerTick": 4.678000000001242,
+   "ticks": 900,
+   "units": 33,
+   "structures": 12,
+   "population": [
+    1
+   ],
+   "parts": 1072,
+   "actors": 28,
+   "drawCalls": 32,
+   "triangles": 129742,
+   "poseMs": 22.299999998882413,
+   "submitMs": 1038.4000000003725
+  },
+  {
+   "msPerTick": 5.500999999996274,
+   "ticks": 1200,
+   "units": 41,
+   "structures": 13,
+   "population": [
+    1
+   ],
+   "parts": 1393,
+   "actors": 36,
+   "drawCalls": 34,
+   "triangles": 158064,
+   "poseMs": 6.800000000745058,
+   "submitMs": 1214.5
+  },
+  {
+   "msPerTick": 5.73733333333085,
+   "ticks": 1500,
+   "units": 45,
+   "structures": 16,
+   "population": [
+    1
+   ],
+   "parts": 1479,
+   "actors": 40,
+   "drawCalls": 25,
+   "triangles": 169256,
+   "poseMs": 5.599999999627471,
+   "submitMs": 1208.4000000003725
+  },
+  {
+   "msPerTick": 1.750666666670392,
+   "ticks": 1800,
+   "units": 57,
+   "structures": 16,
+   "population": [
+    1
+   ],
+   "parts": 1799,
+   "actors": 50,
+   "drawCalls": 28,
+   "triangles": 195542,
+   "poseMs": 6,
+   "submitMs": 16.700000001117587
+  },
+  {
+   "msPerTick": 4.686999999998759,
+   "ticks": 2100,
+   "units": 57,
+   "structures": 15,
+   "population": [
+    1
+   ],
+   "parts": 1646,
+   "actors": 51,
+   "drawCalls": 30,
+   "triangles": 185070,
+   "poseMs": 5.799999998882413,
+   "submitMs": 851.6000000014901
+  },
+  {
+   "msPerTick": 6.241666666666666,
+   "ticks": 2400,
+   "units": 58,
+   "structures": 16,
+   "population": [
+    1
+   ],
+   "parts": 1389,
+   "actors": 54,
+   "drawCalls": 36,
+   "triangles": 170024,
+   "poseMs": 7.599999999627471,
+   "submitMs": 1275.699999999255
+  }
+ ],
+ "peak": {
+  "msPerTick": 6.241666666666666,
+  "ticks": 2400,
+  "units": 58,
+  "structures": 16,
+  "population": [
+   1
+  ],
+  "parts": 1389,
+  "actors": 54,
+  "drawCalls": 36,
+  "triangles": 170024,
+  "poseMs": 7.599999999627471,
+  "submitMs": 1275.699999999255
+ },
+ "errors": [],
+ "mean_ms_per_tick_busy": 4.784,
+ "peak_units": 58,
+ "comparison": "no baseline stored yet",
+ "result": "PASS"
+}
