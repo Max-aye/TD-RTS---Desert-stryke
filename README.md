@@ -1,131 +1,138 @@
 <div align="right">
 
-[🇷🇺 Русская версия](./README.ru.md) · [🇬🇧 English version](./README.md)
+[🇷🇺 Русская версия](./README.ru.md) · [🇬🇧 English](./README.md)
 
 </div>
 
 <div align="center">
 
-# TERRA 2136 • Desert Stryke
+# TERRA 2136 · Desert Stryke
 
-<p><strong>Offline browser tactical RTS / tower offense in one HTML file.</strong></p>
+### Hold the line on a dead frontier — a whole RTS in one offline HTML file
 
 <p>
-  <img alt="Status" src="https://img.shields.io/badge/status-v0.99.0%20%2F%20active%20development-0A8F7A?style=for-the-badge" />
-  <img alt="Platform" src="https://img.shields.io/badge/platform-browser%20%2F%20offline-FFB703?style=for-the-badge" />
+  <img alt="Version" src="https://img.shields.io/badge/version-0.99.2-0A8F7A?style=for-the-badge" />
+  <img alt="Platform" src="https://img.shields.io/badge/platform-browser%20·%20offline-FFB703?style=for-the-badge" />
   <img alt="Render" src="https://img.shields.io/badge/render-WebGL2-1E90FF?style=for-the-badge" />
   <img alt="Build" src="https://img.shields.io/badge/build-single%20HTML-E76F51?style=for-the-badge" />
+  <img alt="Dependencies" src="https://img.shields.io/badge/runtime%20dependencies-0-8A6FE8?style=for-the-badge" />
 </p>
 
 <p>
-  <a href="./index.html">▶ Play now</a> ·
-  <a href="./TERRA2136_PLAY_v0.99.1.html">⬇ Playable build v0.99.0</a> ·
-  <a href="./docs/ROADMAP.md">🗺 Roadmap</a>
+  <a href="./TERRA2136_PLAY_v0.99.2.html"><b>⬇ Download and play</b></a> ·
+  <a href="./index.html">▶ Launch page</a> ·
+  <a href="./docs/ROADMAP.md">🗺 Roadmap</a> ·
+  <a href="./docs/CHANGELOG.md">📓 Changelog</a>
 </p>
+
+<img src="./docs/screen-battle.png" width="270" alt="Battle on a phone" />
+<img src="./docs/screen-boot.png" width="270" alt="Loading screen" />
+
+<sub>Left: a live operation on a 390 px phone. Right: the boot sequence.</sub>
 
 </div>
 
 ---
 
-## Overview
+## One file. No server. No network.
 
-TERRA 2136 is a self-contained tactical strategy game set on a hostile Martian frontier. It combines real-time tower-defense/RTS combat, campaign missions, upgrades, rewards, local progression, responsive mobile-first UI, and WebGL2 rendering. The playable release is a single offline HTML file: no backend, account, CDN, or network connection is required.
+Download `TERRA2136_PLAY_v0.99.2.html`, open it, play. That is the whole install.
 
-## Current release: v0.99.0
+No backend, no account, no CDN, no analytics, no build step for the player. Every model,
+texture, icon and sound cue is embedded in the document. Put it on a phone in airplane
+mode and it still runs — **43 MB of game in a single `.html`**.
 
-The current build includes:
+```
+open TERRA2136_PLAY_v0.99.2.html      # that's it
+```
 
-- **Battle HUD 0.96.0:** no battle text below 10 px on tested viewports, touch targets at least 44 px, and a three-step first-battle guide: build → upgrade → support.
-- **Unit presentation 0.97.x:** screen-size-based detail selection, an 8× anisotropic-filtering ceiling, acceleration/slope lean, turn banking, and device-scaled model textures.
-- **Rewards 0.98.0:** repeat wins pay 35% of the first-clear reward for the first five daily repeats; field alloy finds increased from 3–7 to 6–12.
-- **Collection portraits 0.98.1:** dedicated portraits for Grenadier and Missile cards; shared portraits remain only where two loadouts use the same model.
-- **Maintenance 0.99.0:** 27 provably dead CSS blocks removed and 36 derived crate-pool tables consolidated into one equivalent table. Simulation, balance, and save format are unchanged.
+## The game
 
-The full version history is in [`docs/CHANGELOG.md`](./docs/CHANGELOG.md).
+A tower-offense / RTS hybrid on a hostile Martian frontier. You do not command units
+directly — you build the machine that produces them, and the line holds or it does not.
 
-## Quick start
+- **Three posts, one front.** Pick a post, build a producer, upgrade it under fire.
+  Every card is a building that keeps sending troops down the road.
+- **The beacon pays.** Hold the centre and it funds you at +6 credits a second.
+  Lose it and the counter-attack is already walking.
+- **Real decisions, not menus.** Six deck slots, two support abilities, six upgrade
+  tiers per structure, and a fixed population cap — you cannot have everything.
+- **50 campaign operations**, 82 cards across four rarities, expeditions, a 30-day
+  calendar, modules, technologies, field salvage and a terminal.
+- **Built for a phone first.** 390 px portrait is the design target, not an afterthought:
+  10 px text floor, 44 px touch targets, adaptive resolution under load.
 
-### Play immediately
+## Under the hood
 
-1. Open [`index.html`](./index.html), or open [`TERRA2136_PLAY_v0.99.1.html`](./TERRA2136_PLAY_v0.99.1.html) directly.
-2. Start a battle from HQ.
-3. Build a defense, upgrade it, use support, and return to HQ to review progression.
+This is also an engineering exercise, and the constraints are the interesting part.
 
-### Local preview
+| | |
+|---|---|
+| **Deterministic simulation** | Fixed 20 Hz step, seeded RNG, no wall-clock reads in gameplay. The same seed and the same commands always produce the same match — which is what makes the save format and the automated campaign gate possible. |
+| **Render is never authoritative** | Presentation modules may read simulation state, never write it. Body lean, bank, detail selection and contact shadows all live on render-side actors. |
+| **Transactional economy** | The wallet only changes through `TerraProgress` candidate → write → accept. The UI never grants anything to itself. |
+| **Versioned policies, not rewrites** | Crate pools and the terminal payout table are versioned, and saves carry which version paid them. A five-year-old profile still validates receipt by receipt. |
+| **Split sources, rebuilt output** | Nobody edits the 43 MB file. It is split into `parts/`, edited there, and rebuilt — with a byte-identical round trip as the proof the split is lossless. |
+
+## Toolchain
+
+The repository ships the tools it is developed with. Every one of them prints a verdict.
+
+| Command | What it proves |
+|---|---|
+| `python3 tools/split.py GAME.html parts/` | Break the build into editable sources |
+| `python3 tools/build.py parts/ dist/GAME.html --verify` | Reassemble; `--verify` asserts a byte-identical round trip |
+| `python3 tools/patch.py patches/vX_Y_Z parts/` | Apply a versioned patch set — all of it or none of it, and idempotent |
+| `python3 tools/check.py GAME.html` | `node --check` over every embedded script block |
+| `python3 qa/qa.py GAME.html --out qa-out` | Headless tour of menu and battle: broken images, overflow, tiny text, small tap targets, dock stability |
+| `python3 qa/campaign.py GAME.html` | Plays M01–M05 through the real simulation and fails on any console error |
+| `python3 qa/perf.py GAME.html` | CPU cost per simulated tick in a 220-point battle, compared against a stored baseline |
+| `python3 tools/economy.py` | Where a new player's income actually comes from in week one |
+| `python3 tools/cssdedupe.py parts/css/00-base.css` | Finds style blocks a later rule provably overrides |
+
+Patch sets are the unit of change. Each one names the problem it fixes, matches its
+anchors exactly, and refuses to write anything if a single anchor moved — so a patch
+either lands whole or tells you why it cannot.
+
+## Repository layout
+
+```
+TERRA2136_PLAY_v0.99.2.html   the game — one file, offline
+index.html                    landing page
+parts/                        editable sources (generated by split.py, not committed)
+patches/vX_Y_Z/               versioned patch sets, one folder per release
+tools/                        split, build, patch, check, economy, cssdedupe
+qa/                           headless QA, campaign gate, performance gauge
+docs/                         roadmap, changelog, audit, assets, research notes
+CLAUDE.md                     project rules: source map, invariants, review standards
+```
+
+## Status
+
+**v0.99.2.** Every roadmap milestone up to 1.0.0 is closed and measured: battle HUD
+readability, unit model detail and motion, reward economy, collection art, style and
+tech debt, terminal policy, boot sequence.
+
+One release criterion remains, and it needs hardware rather than code: **30+ FPS in a
+220-point battle on a real phone.** This repository's CI renders on SwiftShader without
+a GPU, so no number produced here can answer it. The procedure is in
+[`docs/ROADMAP.md`](./docs/ROADMAP.md).
+
+## Requirements
+
+Playing needs a WebGL2 browser and nothing else. Developing needs Python 3.11+, Node 20+,
+and Playwright for the QA scripts:
 
 ```bash
-python3 -m http.server 8000
+python3 -m pip install playwright && python3 -m playwright install chromium
 ```
-
-Then open <http://localhost:8000/>.
-
-## Build and validation
-
-Requirements: Python 3.11+, Node.js 20+, Git, and Playwright for browser QA.
-
-```bash
-python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
-python3 tools/check.py dist/TERRA2136_PLAY.html
-
-python3 -m pip install playwright
-python3 -m playwright install chromium
-python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
-python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports mobile
-```
-
-Release and regression checks:
-
-```bash
-python3 qa/campaign.py TERRA2136_PLAY_v0.99.1.html
-python3 qa/perf.py TERRA2136_PLAY_v0.99.1.html
-```
-
-The campaign gate passes M01–M05 without console errors. The performance script is a regression comparison running on SwiftShader; the remaining 1.0.0 gate still requires a 30+ FPS measurement on a real phone in a 220-point battle.
-
-## Project structure
-
-```text
-.
-├── index.html                         # landing page and launch flow
-├── TERRA2136_PLAY_v0.99.1.html       # current offline playable build
-├── parts/                             # modular source used to build the HTML
-│   ├── markup/ css/ ui/               # shell, styles, screens and input
-│   ├── game/ engine/ render/           # simulation, runtime and WebGL2 rendering
-│   └── data/                          # configuration and embedded assets
-├── tools/                             # build, split, checks and analysis tools
-├── qa/                                # UI, campaign and performance checks
-├── patches/                           # versioned, idempotent patch specifications
-└── docs/                              # roadmap, changelog, audit and asset notes
-```
-
-## Roadmap
-
-| Version | Focus | Status |
-|---|---|---|
-| `0.95.0` | HQ order, icons, menu readability | ✅ Complete |
-| `0.96.0` | Battle HUD and mobile readability | ✅ Complete |
-| `0.97.0` | Unit models, textures and motion | ✅ Complete |
-| `0.98.0` | Repeat rewards and field loot | ✅ Complete |
-| `0.98.1` | Collection portraits | ✅ Complete |
-| `0.99.0` | Styles and technical debt | ✅ Complete |
-| `1.0.0` | Release milestone | 🔧 Real-device FPS validation remaining |
-
-See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for acceptance criteria and the phone test procedure.
-
-## Documentation
-
-- [`docs/ROADMAP.md`](./docs/ROADMAP.md) — milestones and release gates
-- [`docs/CHANGELOG.md`](./docs/CHANGELOG.md) — version history
-- [`docs/AUDIT.md`](./docs/AUDIT.md) — UX and technical audit
-- [`docs/ASSETS.md`](./docs/ASSETS.md) — embedded assets and collection portraits
-- [`REWARDS_REVIEW.md`](./REWARDS_REVIEW.md) — economy analysis and decisions
 
 ---
 
 <div align="center">
 
-[**▶ Open the game**](./index.html) · [**⬇ Playable build**](./TERRA2136_PLAY_v0.99.1.html) · [**🗺 Roadmap**](./docs/ROADMAP.md)
+**[⬇ Download the game](./TERRA2136_PLAY_v0.99.2.html)** · **[🗺 Roadmap](./docs/ROADMAP.md)** · **[📓 Changelog](./docs/CHANGELOG.md)**
 
-<strong>TERRA 2136 • Desert Stryke</strong>
+<sub>Development repository and working copy of TERRA 2136 · Desert Stryke.</sub>
 
 </div>

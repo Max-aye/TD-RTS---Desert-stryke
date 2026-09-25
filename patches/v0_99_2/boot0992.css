@@ -1,0 +1,80 @@
+
+/* BOOT-0992. Экран запуска. Только CSS и встроенный SVG: ни одной внешней загрузки,
+ * ни одного растрового файла — сборка не растёт. Всё движение отключается при
+ * prefers-reduced-motion. */
+#boot.boot0992{gap:0;overflow:hidden;background:#04121a}
+
+/* Небо: глубина собирается слоями градиентов, а не картинкой. */
+.boot0992-sky{position:absolute;inset:0;pointer-events:none;overflow:hidden;
+ background:radial-gradient(120% 90% at 50% 12%,#1b4b58 0%,#0a2632 38%,#05141c 72%,#030e14 100%)}
+.boot0992-sky>i{position:absolute;display:block}
+
+/* Пыль: два слоя точек из повторяющихся градиентов, медленный параллакс. */
+.boot0992-dust{inset:-40%;opacity:.5;
+ background-image:radial-gradient(1.6px 1.6px at 18% 22%,#bfeef2 40%,transparent 41%),
+  radial-gradient(1.3px 1.3px at 62% 14%,#9fe0e6 40%,transparent 41%),
+  radial-gradient(1.8px 1.8px at 81% 44%,#e8f6d8 40%,transparent 41%),
+  radial-gradient(1.2px 1.2px at 33% 68%,#8fd6de 40%,transparent 41%),
+  radial-gradient(1.5px 1.5px at 74% 78%,#f4cc79 40%,transparent 41%),
+  radial-gradient(1.1px 1.1px at 8% 52%,#cfeff2 40%,transparent 41%);
+ background-size:38% 42%;animation:boot0992-drift 44s linear infinite}
+.boot0992-dust.b{opacity:.28;background-size:57% 63%;filter:blur(.4px);
+ animation-duration:76s;animation-direction:reverse}
+
+/* Горизонт: тонкая световая дуга под эмблемой — «планета внизу кадра». */
+.boot0992-horizon{left:-20%;right:-20%;bottom:-46vh;height:78vh;border-radius:50%;
+ background:radial-gradient(60% 100% at 50% 0%,#63cedb33,transparent 70%);
+ box-shadow:0 -1px 0 0 #84dfdc4d inset;animation:boot0992-breathe 9s ease-in-out infinite}
+
+/* Одиночный проход сканирующего луча — ритм ожидания, не мигание. */
+.boot0992-scan{inset:0;
+ background:linear-gradient(180deg,transparent 42%,#84dfdc10 50%,transparent 58%);
+ animation:boot0992-scan 6.5s ease-in-out infinite}
+
+#boot.boot0992>*:not(.boot0992-sky){position:relative;z-index:1}
+
+/* Эмблема: обводка прорисовывается, затем держит мягкое свечение. */
+#boot.boot0992 .brand-mark95{margin-bottom:18px;box-shadow:0 0 120px #4ae2da24;
+ animation:boot0992-rise .9s cubic-bezier(.2,.8,.25,1) both}
+#boot.boot0992 .emblem95 path,#boot.boot0992 .emblem95 rect{
+ stroke-dasharray:240;stroke-dashoffset:240;animation:boot0992-draw 1.5s ease-out .15s forwards}
+#boot.boot0992 .emblem95 path[fill]:not([fill="none"]){animation-delay:.5s}
+
+#boot.boot0992 .eyebrow{animation:boot0992-rise .9s cubic-bezier(.2,.8,.25,1) .1s both;
+ color:#8fd6de;letter-spacing:.32em}
+#boot.boot0992 h1{animation:boot0992-title 1.4s cubic-bezier(.2,.8,.25,1) .15s both;margin:2px 0 10px}
+#boot.boot0992 p{animation:boot0992-rise .9s ease-out .3s both;min-height:2.6em}
+#boot.boot0992 small{animation:boot0992-rise .9s ease-out .5s both;color:#6f9298}
+
+/* Полоса прогресса: заполняется только по реальным вехам загрузки. */
+.boot0992-panel{width:min(360px,78vw);margin:22px 0 14px;
+ animation:boot0992-rise .9s ease-out .4s both}
+.boot0992-track{position:relative;height:3px;border-radius:2px;overflow:hidden;
+ background:#0d2c36;box-shadow:0 0 0 1px #63cedb26}
+.boot0992-fill{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);
+ background:linear-gradient(90deg,#3f8f9b,#84dfdc 70%,#f4cc79);
+ box-shadow:0 0 12px #84dfdc80}
+.boot0992-row{display:flex;align-items:baseline;gap:10px;margin-top:10px;text-align:left}
+.boot0992-stage{flex:0 0 auto;font-size:10px;letter-spacing:.24em;color:#f4cc79}
+.boot0992-line{flex:1;min-width:0;font-size:12px;color:#9dafb1;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.boot0992-swap{animation:boot0992-swap .5s ease-out both}
+#boot.boot0992-failed .boot0992-fill{background:#ef977d;box-shadow:0 0 12px #ef977d80}
+#boot.boot0992-failed .boot0992-stage{color:#ef977d}
+
+@keyframes boot0992-drift{to{transform:translate3d(-6%,4%,0)}}
+@keyframes boot0992-breathe{0%,100%{opacity:.75}50%{opacity:1}}
+@keyframes boot0992-scan{0%,100%{transform:translateY(-52%)}50%{transform:translateY(52%)}}
+@keyframes boot0992-draw{to{stroke-dashoffset:0}}
+@keyframes boot0992-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes boot0992-title{from{opacity:0;letter-spacing:.42em}to{opacity:1;letter-spacing:.17em}}
+@keyframes boot0992-swap{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+ .boot0992-dust,.boot0992-horizon,.boot0992-scan,#boot.boot0992 .brand-mark95,
+ #boot.boot0992 .eyebrow,#boot.boot0992 h1,#boot.boot0992 p,#boot.boot0992 small,
+ #boot.boot0992 .emblem95 path,#boot.boot0992 .emblem95 rect,.boot0992-panel,
+ .boot0992-swap{animation:none!important}
+ #boot.boot0992 .emblem95 path,#boot.boot0992 .emblem95 rect{stroke-dashoffset:0}
+}
+@media (max-width:700px){.boot0992-panel{margin:18px 0 12px}.boot0992-line{font-size:11px}}

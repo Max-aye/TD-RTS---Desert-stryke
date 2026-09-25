@@ -2,6 +2,11 @@
 
 [🇷🇺 Русская версия](./README.ru.md) · [🇬🇧 English version](./README.md)
 
+<img src="./docs/screen-battle.png" width="260" alt="Бой на телефоне" />
+<img src="./docs/screen-boot.png" width="260" alt="Экран загрузки" />
+
+<sub>Слева — операция на экране 390 px. Справа — запуск игры.</sub>
+
 </div>
 
 <div align="center">
@@ -14,7 +19,7 @@
 
 <p>
   <a href="./index.html">▶ Играть сейчас</a> ·
-  <a href="./TERRA2136_PLAY_v0.99.1.html">⬇ Игровая сборка v0.99.0</a> ·
+  <a href="./TERRA2136_PLAY_v0.99.2.html">⬇ Игровая сборка v0.99.0</a> ·
   <a href="./docs/ROADMAP.md">🗺 Дорожная карта</a>
 </p>
 
@@ -44,7 +49,7 @@
 
 ### Сразу открыть игру
 
-1. Откройте [`index.html`](./index.html) или напрямую [`TERRA2136_PLAY_v0.99.1.html`](./TERRA2136_PLAY_v0.99.1.html).
+1. Откройте [`index.html`](./index.html) или напрямую [`TERRA2136_PLAY_v0.99.2.html`](./TERRA2136_PLAY_v0.99.2.html).
 2. Запустите бой из штаба.
 3. Постройте оборону, улучшите её, используйте поддержку и вернитесь в штаб для просмотра прогресса.
 
@@ -73,8 +78,8 @@ python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports
 Проверки релиза и регрессий:
 
 ```bash
-python3 qa/campaign.py TERRA2136_PLAY_v0.99.1.html
-python3 qa/perf.py TERRA2136_PLAY_v0.99.1.html
+python3 qa/campaign.py TERRA2136_PLAY_v0.99.2.html
+python3 qa/perf.py TERRA2136_PLAY_v0.99.2.html
 ```
 
 Кампейн-гейт проходит M01–M05 без ошибок консоли. Скрипт производительности сравнивает регрессии в окружении SwiftShader; для закрытия оставшегося гейта 1.0.0 всё ещё нужен замер 30+ FPS на реальном телефоне в бою на 220 очков.
@@ -84,7 +89,7 @@ python3 qa/perf.py TERRA2136_PLAY_v0.99.1.html
 ```text
 .
 ├── index.html                         # landing page и запуск игры
-├── TERRA2136_PLAY_v0.99.1.html        # актуальная офлайн-сборка
+├── TERRA2136_PLAY_v0.99.2.html        # актуальная офлайн-сборка
 ├── parts/                              # модульные исходники для сборки HTML
 │   ├── markup/ css/ ui/                # каркас, стили, экраны и ввод
 │   ├── game/ engine/ render/           # симуляция, runtime и WebGL2-рендеринг
@@ -121,7 +126,7 @@ python3 qa/perf.py TERRA2136_PLAY_v0.99.1.html
 
 <div align="center">
 
-[**▶ Открыть игру**](./index.html) · [**⬇ Скачать сборку**](./TERRA2136_PLAY_v0.99.1.html) · [**🗺 Смотреть roadmap**](./docs/ROADMAP.md)
+[**▶ Открыть игру**](./index.html) · [**⬇ Скачать сборку**](./TERRA2136_PLAY_v0.99.2.html) · [**🗺 Смотреть roadmap**](./docs/ROADMAP.md)
 
 <strong>TERRA 2136 • Desert Stryke</strong>
 
