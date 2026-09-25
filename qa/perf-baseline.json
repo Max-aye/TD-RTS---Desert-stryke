@@ -1,0 +1,8 @@
+{
+ "game": "TERRA2136_PLAY_v0.99.0.html",
+ "size": "army",
+ "difficulty": "normal",
+ "mean_ms_per_tick_busy": 4.784,
+ "peak_units": 58,
+ "note": "Снято в контейнере на SwiftShader. Абсолютное число к телефону отношения не имеет; эталон нужен для сравнения сборок между собой."
+}
