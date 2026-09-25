@@ -1,0 +1,137 @@
+[
+ {
+  "old": "#menu-nav button[aria-current=page]{border-color:#d8c5826b;background:#c4b06510;color:var(--gold)}",
+  "new": "",
+  "why": "#menu-nav button[aria-current=page]"
+ },
+ {
+  "old": ".dock-main{display:flex;gap:14px;align-items:center;margin-top:9px}",
+  "new": "",
+  "why": ".dock-main"
+ },
+ {
+  "old": ".wordmark{font-size:20px}",
+  "new": "",
+  "why": ".wordmark"
+ },
+ {
+  "old": ".meta-chips{gap:10px}",
+  "new": "",
+  "why": ".meta-chips"
+ },
+ {
+  "old": ".mini-card span{font-size:8px}",
+  "new": "",
+  "why": ".mini-card span"
+ },
+ {
+  "old": "0px}#menu-nav button span{font-size:10px}",
+  "new": "0px}",
+  "why": "#menu-nav button span"
+ },
+ {
+  "old": ".match-clock small{font-size:6px}",
+  "new": "",
+  "why": ".match-clock small"
+ },
+ {
+  "old": "8px}.slot-btn span{font-size:9px}",
+  "new": "8px}",
+  "why": ".slot-btn span"
+ },
+ {
+  "old": "9px}.slot-btn small{font-size:8px}",
+  "new": "9px}",
+  "why": ".slot-btn small"
+ },
+ {
+  "old": "#battle[data-panel=build],#battle[data-panel=inspect]{grid-template-rows:57px minmax(0,1fr) min(182px,36dvh)}",
+  "new": "",
+  "why": "#battle[data-panel=build],#battle[data-panel=inspect]"
+ },
+ {
+  "old": ".build-card img{height:49px}",
+  "new": "",
+  "why": ".build-card img"
+ },
+ {
+  "old": ".build-card{min-height:95px}",
+  "new": "",
+  "why": ".build-card"
+ },
+ {
+  "old": ".inspect img{height:88px}",
+  "new": "",
+  "why": ".inspect img"
+ },
+ {
+  "old": ".dock-subhead{min-height:27px}",
+  "new": "",
+  "why": ".dock-subhead"
+ },
+ {
+  "old": ".dock-subhead button{min-height:27px}",
+  "new": "",
+  "why": ".dock-subhead button"
+ },
+ {
+  "old": "#battle[data-panel=build],#battle[data-panel=inspect]{grid-template-rows:49px minmax(0,1fr) min(130px,33dvh)}",
+  "new": "",
+  "why": "#battle[data-panel=build],#battle[data-panel=inspect]"
+ },
+ {
+  "old": "#menu-nav{grid-template-columns:repeat(5,1fr)}",
+  "new": "",
+  "why": "#menu-nav"
+ },
+ {
+  "old": "#battle-hint{top:68px}",
+  "new": "",
+  "why": "#battle-hint"
+ },
+ {
+  "old": ".slots{flex:2}",
+  "new": "",
+  "why": ".slots"
+ },
+ {
+  "old": ".slot-btn{gap:6px}",
+  "new": "",
+  "why": ".slot-btn"
+ },
+ {
+  "old": ".slot-btn img{width:36px}",
+  "new": "",
+  "why": ".slot-btn img"
+ },
+ {
+  "old": ".field-tools{top:62px}",
+  "new": "",
+  "why": ".field-tools"
+ },
+ {
+  "old": "\n\n#fx-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden}",
+  "new": "\n\n",
+  "why": "#fx-layer"
+ },
+ {
+  "old": "#menu-nav button[aria-current=page]{color:#f2d08e}",
+  "new": "",
+  "why": "#menu-nav button[aria-current=page]"
+ },
+ {
+  "old": ".day-cell.current{border-color:#e8c887;box-shadow:0 0 18px #e2bd5a15;background:#51472444}",
+  "new": "",
+  "why": ".day-cell.current"
+ },
+ {
+  "old": ".meta-chips{gap:7px}",
+  "new": "",
+  "why": ".meta-chips"
+ },
+ {
+  "old": ".menu-head .icon-btn{width:38px;height:38px;min-height:38px}",
+  "new": "",
+  "why": ".menu-head .icon-btn"
+ }
+]
