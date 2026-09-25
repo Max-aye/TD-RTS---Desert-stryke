@@ -1,0 +1,43 @@
+
+/* HUD-096. Loaded after 10-polish95.css, so equal specificity wins by order.
+ * Presentation only: a 10 px text floor in battle, readable resources, posts and support at 390 px,
+ * 44 px touch targets in the build and support flows, and a step hint that is not cut off.
+ * Scoped to the phone sheets, so desktop sizes (11-12 px) are not pulled down.
+ * No simulation, balance or save-format changes. */
+
+/* Portrait phones: battle head, resource row, post row and support cooldowns ran 7-9 px. */
+@media(max-width:700px){
+ .battle-head .core>div:first-child{font-size:10px;letter-spacing:.02em;gap:5px;flex-wrap:nowrap}
+ .battle-head .core>div:first-child span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ #mission-info,#mission-info span,#mission-info small{font-size:11px}
+ /* 11 px needs a wider chip; the beacon chip starts at 236 px on a 390 px screen. */
+ #mission-info{max-width:190px}
+ #beacon-info,#beacon-info span{font-size:11px}
+ .dock-resources .res small{font-size:10px}
+ .lanes button .lane-name{font-size:11px}
+ .lanes button small{font-size:10px}
+ .support-btns button small{font-size:10px}
+}
+
+/* Landscape phones have their own compact sheet; the same floor applies there. */
+@media(max-height:560px) and (orientation:landscape){
+ .battle-head .core>div:first-child{font-size:10px;letter-spacing:.02em}
+ #mission-info,#mission-info span,#beacon-info,#beacon-info span{font-size:10px}
+ .lanes button,.lanes button .lane-name{font-size:10px}
+ .lanes button small,.support-btns button small,.dock-resources .res small{font-size:10px}
+ .build-card .caption,.build-card .cost{font-size:10px}
+}
+
+/* Below the floor on every screen. */
+.match-clock small,#phase-label{font-size:10px;letter-spacing:.05em}
+.loot-counter small{font-size:10px}
+.field-label{font-size:10px}
+
+/* The hint now carries the first-battle steps, so it reads as a sentence. */
+#battle-hint{font-size:12px;line-height:1.35}
+/* Step and advice hints were clamped to one 240 px line and lost their tail to an ellipsis. */
+#battle-hint[data-guide=true],#battle-hint[data-advice=true]{white-space:normal;overflow:visible;text-overflow:clip;max-width:min(86%,340px)}
+
+/* Touch targets: the build panel's close button was 40 x 26, support cancel 44 x 32. */
+.dock-subhead .text-btn{min-height:44px;height:44px;min-width:44px;padding:0 10px}
+#cast-cancel{height:44px;min-height:44px}
