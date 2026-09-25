@@ -1,0 +1,97 @@
+{
+ "game": "TERRA2136_PLAY_v0.99.0.html",
+ "missions": [
+  {
+   "mission": "M01",
+   "ticks": 3226,
+   "minutes": 2.7,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 0,
+   "launched": "M01",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 15.4,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M02",
+   "ticks": 3003,
+   "minutes": 2.5,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 0,
+   "launched": "M02",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 10.6,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M03",
+   "ticks": 3149,
+   "minutes": 2.6,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 1,
+   "launched": "M03",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 9.7,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M04",
+   "ticks": 3082,
+   "minutes": 2.6,
+   "phase": "result",
+   "winner": 1,
+   "reason": "evac_base_lost",
+   "built": 3,
+   "rebuilt": 0,
+   "launched": "M04",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 10.1,
+   "console_errors": [],
+   "page_errors": []
+  },
+  {
+   "mission": "M05",
+   "ticks": 3705,
+   "minutes": 3.1,
+   "phase": "result",
+   "winner": 1,
+   "reason": "core_destroyed",
+   "built": 3,
+   "rebuilt": 1,
+   "launched": "M05",
+   "hp": [
+    0,
+    7000
+   ],
+   "seconds": 12.4,
+   "console_errors": [],
+   "page_errors": []
+  }
+ ],
+ "problems": [],
+ "result": "PASS"
+}
