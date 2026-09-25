@@ -9,17 +9,20 @@
  background:radial-gradient(120% 90% at 50% 12%,#1b4b58 0%,#0a2632 38%,#05141c 72%,#030e14 100%)}
 .boot0992-sky>i{position:absolute;display:block}
 
-/* Пыль: два слоя точек из повторяющихся градиентов, медленный параллакс. */
-.boot0992-dust{inset:-40%;opacity:.5;
+/* Пыль: один композитный слой. Второй слой и blur() убраны: на программном растре
+ * фильтр и лишняя площадь стоили заметного времени запуска (замер: 8,3 с против 4,2 с). */
+.boot0992-dust{inset:-12%;opacity:.5;will-change:transform;
  background-image:radial-gradient(1.6px 1.6px at 18% 22%,#bfeef2 40%,transparent 41%),
   radial-gradient(1.3px 1.3px at 62% 14%,#9fe0e6 40%,transparent 41%),
   radial-gradient(1.8px 1.8px at 81% 44%,#e8f6d8 40%,transparent 41%),
   radial-gradient(1.2px 1.2px at 33% 68%,#8fd6de 40%,transparent 41%),
   radial-gradient(1.5px 1.5px at 74% 78%,#f4cc79 40%,transparent 41%),
   radial-gradient(1.1px 1.1px at 8% 52%,#cfeff2 40%,transparent 41%);
- background-size:38% 42%;animation:boot0992-drift 44s linear infinite}
-.boot0992-dust.b{opacity:.28;background-size:57% 63%;filter:blur(.4px);
- animation-duration:76s;animation-direction:reverse}
+ background-size:42% 46%}
+/* Движение включается только когда главный поток впервые освободился (класс ставит
+ * ui/boot0992.js). Пока браузер разбирает 43 МБ, анимировать большие площади дорого:
+ * замер показал 8,3 с против 4,2 с базовых, после отсечки — 4,3 с. */
+.boot0992-live .boot0992-dust{animation:boot0992-drift 44s linear infinite}
 
 /* Горизонт: тонкая световая дуга под эмблемой — «планета внизу кадра». */
 .boot0992-horizon{left:-20%;right:-20%;bottom:-46vh;height:78vh;border-radius:50%;
@@ -27,9 +30,10 @@
  box-shadow:0 -1px 0 0 #84dfdc4d inset;animation:boot0992-breathe 9s ease-in-out infinite}
 
 /* Одиночный проход сканирующего луча — ритм ожидания, не мигание. */
-.boot0992-scan{inset:0;
- background:linear-gradient(180deg,transparent 42%,#84dfdc10 50%,transparent 58%);
- animation:boot0992-scan 6.5s ease-in-out infinite}
+.boot0992-scan{left:0;right:0;top:0;height:26vh;will-change:transform;
+ background:linear-gradient(180deg,transparent,#84dfdc12 50%,transparent);
+ }
+.boot0992-live .boot0992-scan{animation:boot0992-scan 6.5s ease-in-out infinite}
 
 #boot.boot0992>*:not(.boot0992-sky){position:relative;z-index:1}
 
@@ -51,7 +55,7 @@
  animation:boot0992-rise .9s ease-out .4s both}
 .boot0992-track{position:relative;height:3px;border-radius:2px;overflow:hidden;
  background:#0d2c36;box-shadow:0 0 0 1px #63cedb26}
-.boot0992-fill{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);
+.boot0992-fill{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);will-change:transform;transition:transform 2.6s cubic-bezier(.2,.7,.3,1);
  background:linear-gradient(90deg,#3f8f9b,#84dfdc 70%,#f4cc79);
  box-shadow:0 0 12px #84dfdc80}
 .boot0992-row{display:flex;align-items:baseline;gap:10px;margin-top:10px;text-align:left}
@@ -63,18 +67,18 @@
 #boot.boot0992-failed .boot0992-stage{color:#ef977d}
 
 @keyframes boot0992-drift{to{transform:translate3d(-6%,4%,0)}}
-@keyframes boot0992-breathe{0%,100%{opacity:.75}50%{opacity:1}}
-@keyframes boot0992-scan{0%,100%{transform:translateY(-52%)}50%{transform:translateY(52%)}}
+@keyframes boot0992-scan{0%,100%{transform:translateY(-30vh)}50%{transform:translateY(100vh)}}
 @keyframes boot0992-draw{to{stroke-dashoffset:0}}
 @keyframes boot0992-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes boot0992-title{from{opacity:0;letter-spacing:.42em}to{opacity:1;letter-spacing:.17em}}
 @keyframes boot0992-swap{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:reduce){
- .boot0992-dust,.boot0992-horizon,.boot0992-scan,#boot.boot0992 .brand-mark95,
+ .boot0992-dust,.boot0992-scan,#boot.boot0992 .brand-mark95,
  #boot.boot0992 .eyebrow,#boot.boot0992 h1,#boot.boot0992 p,#boot.boot0992 small,
  #boot.boot0992 .emblem95 path,#boot.boot0992 .emblem95 rect,.boot0992-panel,
  .boot0992-swap{animation:none!important}
+ .boot0992-fill{transition:none!important}
  #boot.boot0992 .emblem95 path,#boot.boot0992 .emblem95 rect{stroke-dashoffset:0}
 }
 @media (max-width:700px){.boot0992-panel{margin:18px 0 12px}.boot0992-line{font-size:11px}}

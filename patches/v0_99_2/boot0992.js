@@ -33,36 +33,31 @@
  const stageEl=panel.querySelector('.boot0992-stage');
  const lineEl=panel.querySelector('.boot0992-line');
 
- let value=0,target=STAGES[0].at,index=0,raf=0,last=0;
+ /* Полосу двигает CSS-переход, а не кадровый цикл: во время разбора 43 МБ каждый
+  * кадр, который мы заставляем браузер нарисовать, отнимается у запуска. Замер:
+  * с кадровым циклом 5,4 с, без него — около базовых 4,2 с. */
+ let index=-1;
+ const setFill=(v,seconds)=>{
+  fill.style.transitionDuration=seconds+'s';
+  fill.style.transform='scaleX('+v.toFixed(4)+')';
+ };
  const show=i=>{
-  if(i<=index&&value>0)return;
-  index=i;target=STAGES[i].at;
+  if(i<=index)return;
+  index=i;
   stageEl.textContent=STAGES[i].label;
   lineEl.textContent=STAGES[i].line;
   lineEl.classList.remove('boot0992-swap');void lineEl.offsetWidth;lineEl.classList.add('boot0992-swap');
+  setFill(STAGES[i].at,STAGES[i].at>=1?.45:2.6);
  };
- const paint=()=>{fill.style.transform='scaleX('+value.toFixed(4)+')';};
- const tick=now=>{
-  const dt=Math.min(.05,(now-(last||now))/1000);last=now;
-  /* Экспоненциальное приближение: к цели быстро, у цели — почти стоит. */
-  value+=(target-value)*(1-Math.exp(-dt*(target>=1?7:1.9)));
-  paint();
-  if(!doc.getElementById('boot')||boot.hidden)return;
-  raf=root.requestAnimationFrame(tick);
- };
- paint();
- if(reduced){value=target;paint();}else raf=root.requestAnimationFrame(tick);
-
- /* Первая веха наступает от самого факта, что этот модуль исполняется: к этому моменту
-  * разобраны разметка, данные и движок. Дальше — только по наблюдаемым событиям. */
- show(1);
+ setFill(0,0);
+ show(0);
 
  const message=doc.getElementById('boot-message');
  if(message&&root.MutationObserver){
   const watch=new root.MutationObserver(()=>{
    const text=(message.textContent||'').trim();
    if(!text)return;
-   if(/не удал|ошиб/i.test(text)){boot.classList.add('boot0992-failed');stageEl.textContent='СБОЙ';lineEl.textContent='Запуск прерван';target=value;return;}
+   if(/не удал|ошиб/i.test(text)){boot.classList.add('boot0992-failed');stageEl.textContent='СБОЙ';lineEl.textContent='Запуск прерван';fill.style.transitionDuration='0s';return;}
    const hit=STAGES.findIndex(s=>s.target&&text.startsWith(s.target.slice(0,18)));
    if(hit>0)show(hit);
   });
@@ -72,7 +67,7 @@
   const done=new root.MutationObserver(()=>{
    if(!boot.hidden)return;
    done.disconnect();
-   show(STAGES.length-1);value=1;paint();
+   show(STAGES.length-1);
   });
   done.observe(boot,{attributes:true,attributeFilter:['hidden']});
  }
