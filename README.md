@@ -25,7 +25,7 @@ A self-contained tactical RTS built in a single HTML file. The project focuses o
 
 <p align="center">
   <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Play%20Now-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Play now" /></a>
-  <a href="./TERRA2136_PLAY_v0.96.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.96.0-7AE582?style=for-the-badge" alt="Playable build" /></a>
+  <a href="./TERRA2136_PLAY_v0.97.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.97.0-7AE582?style=for-the-badge" alt="Playable build" /></a>
   <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Roadmap-9AA0FF?style=for-the-badge" alt="Roadmap" /></a>
 </p>
 
@@ -65,7 +65,7 @@ This project was designed as both a playable game and a technical showcase: it d
 
 1. Open [`index.html`](./index.html).
 2. Launch the game from the landing page.
-3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.96.0.html`](./TERRA2136_PLAY_v0.96.0.html).
+3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.97.0.html`](./TERRA2136_PLAY_v0.97.0.html).
 
 No back-end, account system, or external CDN is required.
 
@@ -84,7 +84,7 @@ Then open <http://localhost:8000/>.
 ```text
 .
 ├── index.html                        # landing / launch page
-├── TERRA2136_PLAY_v0.96.0.html       # playable offline build
+├── TERRA2136_PLAY_v0.97.0.html       # playable offline build
 ├── parts/                            # source files used to rebuild the game
 │   ├── markup/                      # HTML shell, battle screen, menu frames
 │   ├── css/                         # UI styling layers and polish rules
@@ -146,7 +146,7 @@ python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
 ### Rebuild from a split HTML file
 
 ```bash
-python3 tools/split.py TERRA2136_PLAY_v0.96.0.html parts/
+python3 tools/split.py TERRA2136_PLAY_v0.97.0.html parts/
 ```
 
 ### Syntax validation
@@ -175,8 +175,9 @@ This validates menu flow, touch targets, overflow, visual readability, and battl
 |---|---|---|
 | `0.95.0` | UI clarity, icons, layout polish | ✅ Complete |
 | `0.96.0` | Combat HUD improvements | ✅ Complete |
-| `0.97.0` | Reward progression tuning | 🔧 Planned |
-| `0.98.0` | Visual enhancement and map polish | 🗺️ Planned |
+| `0.97.0` | Unit models: detail, textures, motion | ✅ Complete |
+| `0.98.0` | Reward progression tuning | 🔧 Planned |
+| `0.98.1` | Map visual polish | 🗺️ Planned |
 | `1.0.0` | Release-ready milestone | 🎯 Target |
 
 See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for detailed milestones.
@@ -213,7 +214,7 @@ It is especially suitable for discussing software craftsmanship, product iterati
 
 ### Explore the project
 
-[**▶ Open the game**](./index.html) · [**⬇ Playable build**](./TERRA2136_PLAY_v0.96.0.html) · [**🗺 Roadmap**](./docs/ROADMAP.md)
+[**▶ Open the game**](./index.html) · [**⬇ Playable build**](./TERRA2136_PLAY_v0.97.0.html) · [**🗺 Roadmap**](./docs/ROADMAP.md)
 
 <br>
 
