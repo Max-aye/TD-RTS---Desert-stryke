@@ -25,7 +25,7 @@
 
 <p align="center">
   <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Запустить%20игру-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Запустить игру" /></a>
-  <a href="./TERRA2136_PLAY_v0.96.0.html"><img src="https://img.shields.io/badge/⬇%20Игровая%20сборка-v0.96.0-7AE582?style=for-the-badge" alt="Игровая сборка" /></a>
+  <a href="./TERRA2136_PLAY_v0.97.0.html"><img src="https://img.shields.io/badge/⬇%20Игровая%20сборка-v0.97.0-7AE582?style=for-the-badge" alt="Игровая сборка" /></a>
   <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20План%20развития-9AA0FF?style=for-the-badge" alt="План развития" /></a>
 </p>
 
@@ -65,7 +65,7 @@ TERRA 2136 — компактный прототип тактической ст
 
 1. Откройте [`index.html`](./index.html).
 2. Запустите игру с landing page.
-3. Либо откройте готовую сборку напрямую: [`TERRA2136_PLAY_v0.96.0.html`](./TERRA2136_PLAY_v0.96.0.html).
+3. Либо откройте готовую сборку напрямую: [`TERRA2136_PLAY_v0.97.0.html`](./TERRA2136_PLAY_v0.97.0.html).
 
 Серверная часть, учётная запись и внешний CDN не требуются.
 
@@ -84,7 +84,7 @@ python3 -m http.server 8000
 ```text
 .
 ├── index.html                        # landing page / запуск
-├── TERRA2136_PLAY_v0.96.0.html       # готовая офлайн-сборка
+├── TERRA2136_PLAY_v0.97.0.html       # готовая офлайн-сборка
 ├── parts/                             # исходники для повторной сборки игры
 │   ├── markup/                        # HTML-каркас, экран боя, меню
 │   ├── css/                           # слои стилей и правила полировки
@@ -146,7 +146,7 @@ python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
 ### Повторное разделение HTML-файла на исходники
 
 ```bash
-python3 tools/split.py TERRA2136_PLAY_v0.96.0.html parts/
+python3 tools/split.py TERRA2136_PLAY_v0.97.0.html parts/
 ```
 
 ### Проверка синтаксиса
@@ -175,8 +175,9 @@ python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports
 |---|---|---|
 | `0.95.0` | Понятность UI, иконки, полировка layout | ✅ Завершено |
 | `0.96.0` | Улучшения боевого HUD | ✅ Завершено |
-| `0.97.0` | Настройка развития и наград | 🔧 Запланировано |
-| `0.98.0` | Визуальные улучшения и полировка карты | 🗺️ Запланировано |
+| `0.97.0` | Модели юнитов: детализация, текстуры, движение | ✅ Завершено |
+| `0.98.0` | Настройка развития и наград | 🔧 Запланировано |
+| `0.98.1` | Визуальная полировка карт | 🗺️ Запланировано |
 | `1.0.0` | Версия, готовая к релизу | 🎯 Цель |
 
 Подробности приведены в [`docs/ROADMAP.md`](./docs/ROADMAP.md).
@@ -213,7 +214,7 @@ python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports
 
 ### Исследуйте проект
 
-[**▶ Открыть игру**](./index.html) · [**⬇ Игровая сборка**](./TERRA2136_PLAY_v0.96.0.html) · [**🗺 План развития**](./docs/ROADMAP.md)
+[**▶ Открыть игру**](./index.html) · [**⬇ Игровая сборка**](./TERRA2136_PLAY_v0.97.0.html) · [**🗺 План развития**](./docs/ROADMAP.md)
 
 <br>
 
