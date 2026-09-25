@@ -1,114 +1,222 @@
-# TERRA 2136 — Desert Stryke
+<div align="right">
 
-Офлайн-игра в жанре tower offense/RTS для браузера. Проект собран вокруг одной игровой сборки, которая запускается локально без сервера и без внешних зависимостей. Основной цикл — оборона, постройка укреплений, подбор модулей и продвижение по кампании.
+[🇷🇺 Русская версия](./README.ru.md) <img src="./assets/language-arrow.svg" width="32" alt="переключить язык" /> [🇬🇧 English version](./README.md)
 
-## Что это за проект
+</div>
 
-- Игра написана как самодостаточный HTML-файл с WebGL2-рендером и локальной логикой симуляции.
-- Исходники хранятся в папке `parts/`, а конечная сборка собирается из них заново.
-- В репозитории есть инструменты для разбиения, сборки, проверки синтаксиса и автоматической QA-валидации.
-- В проекте поддерживаются мобильный и десктопный сценарии запуска, а итоговый прогон проверяется скриптом QA.
+<div align="center">
 
-## Статус
+# TERRA 2136 • Desert Stryke
 
-- Текущая базовая версия: `0.96.0`
-- Релизная сборка: `TERRA2136_PLAY_v0.96.0.html`
-- Лэндинг: `index.html`
+<p align="center">
+  <img src="./docs/before-after-mobile.png" alt="TERRA 2136 — Desert Stryke" width="900" />
+</p>
 
-## Быстрый запуск
+<p align="center">
+  <img alt="Status" src="https://img.shields.io/badge/status-active%20development-0A8F7A?style=for-the-badge" />
+  <img alt="Platform" src="https://img.shields.io/badge/platform-browser%20%2F%20offline-FFB703?style=for-the-badge" />
+  <img alt="Render" src="https://img.shields.io/badge/render-WebGL2-1E90FF?style=for-the-badge" />
+  <img alt="Build" src="https://img.shields.io/badge/build-single%20HTML-E76F51?style=for-the-badge" />
+</p>
 
-Если нужен просто игровой файл:
+### Offline browser strategy prototype with a full game loop, UI systems, and QA automation
 
-1. Откройте `index.html` в браузере, либо
-2. Откройте готовую сборку `TERRA2136_PLAY_v0.96.0.html` напрямую.
+A self-contained tactical RTS built in a single HTML file. The project focuses on a clean gameplay loop, mobile-first UX, strong visual identity, and maintainable architecture without external dependencies.
 
-Игра работает офлайн, без сети, без внешних CDN и дополнительных установок.
+<p align="center">
+  <a href="./index.html"><img src="https://img.shields.io/badge/▶%20Play%20Now-FFD166?style=for-the-badge&logo=play&logoColor=111827" alt="Play now" /></a>
+  <a href="./TERRA2136_PLAY_v0.96.0.html"><img src="https://img.shields.io/badge/⬇%20Playable%20Build-v0.96.0-7AE582?style=for-the-badge" alt="Playable build" /></a>
+  <a href="./docs/ROADMAP.md"><img src="https://img.shields.io/badge/🗺%20Roadmap-9AA0FF?style=for-the-badge" alt="Roadmap" /></a>
+</p>
 
-## Структура репозитория
+</div>
 
-- `index.html` — краткий landing page проекта
-- `TERRA2136_PLAY_v0.96.0.html` — собранная игровая сборка
-- `parts/` — рабочая копия исходников, из которой собирается HTML
-- `tools/` — инструменты сборки и валидации
-- `qa/` — скрипт автоматической проверки игры и интерфейса
-- `patches/` — последовательные патчи для версий проекта
-- `docs/` — документация, дорожная карта, аудит, отзывы и заметки по прогрессу
-- `CLAUDE.md` — локальные правила разработки для Claude Code
-- `PROMPTS.md` — шаблоны целей и задач для автономной работы
-- `REWARDS_REVIEW.md` — аналитика наград и экономики
+---
 
-## Требования для сборки и проверки
+## Overview
+
+TERRA 2136 is a compact tactical strategy prototype set on a hostile Martian frontier. The game combines:
+
+- real-time tower defense / RTS combat;
+- campaign progression and map progression;
+- modular upgrades, rewards, and player systems;
+- mobile-first interface design and responsive layouts;
+- WebGL2 rendering with a single offline build.
+
+This project was designed as both a playable game and a technical showcase: it demonstrates how to structure a browser game with split source files, deterministic simulation logic, UI engineering, and QA validation within a single repository.
+
+---
+
+## Why this project stands out
+
+| Area | What it demonstrates |
+|---|---|
+| Gameplay systems | Tactical combat, resource flow, progression, and decision-making under time pressure |
+| Architecture | Split source structure rebuilt into one distributable HTML artifact |
+| UI / UX | Mobile-first interface, readable controls, compact action loops, and screen flow |
+| Technical quality | QA automation, script validation, and repeatable build workflows |
+| Presentation | Distinct visual identity and polished public-facing project page |
+
+---
+
+## Quick start
+
+### Play immediately
+
+1. Open [`index.html`](./index.html).
+2. Launch the game from the landing page.
+3. Or run the bundled build directly: [`TERRA2136_PLAY_v0.96.0.html`](./TERRA2136_PLAY_v0.96.0.html).
+
+No back-end, account system, or external CDN is required.
+
+### Local HTTP preview
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000/>.
+
+---
+
+## Project structure
+
+```text
+.
+├── index.html                        # landing / launch page
+├── TERRA2136_PLAY_v0.96.0.html       # playable offline build
+├── parts/                            # source files used to rebuild the game
+│   ├── markup/                      # HTML shell, battle screen, menu frames
+│   ├── css/                         # UI styling layers and polish rules
+│   ├── ui/                          # navigation, screens, HUD, input logic
+│   ├── game/                        # simulation, campaign logic, progression
+│   ├── render/                      # render pipeline and visual effects
+│   ├── engine/                      # runtime and game loop infrastructure
+│   └── data/                        # configuration, assets, embedded resources
+├── tools/                            # split, build, syntax-check, patch utilities
+├── qa/                               # automated UI and smoke-test validation
+├── patches/                          # versioned patch workflow and revision history
+├── docs/                             # roadmap, changelog, audit, game notes
+├── CLAUDE.md                         # project rules and invariants
+├── PROMPTS.md                        # task framing and goal templates
+├── REWARDS_REVIEW.md                 # economy and reward analysis
+├── README.md                         # English project overview
+├── README.ru.md                      # Russian project overview
+├── .github/                          # GitHub workflow and repository config
+└── .claude/                          # local assistant/project guidance files
+```
+
+---
+
+## Technical highlights
+
+### Game systems
+
+- deterministic battle simulation with fixed-step logic;
+- campaign flow, progression, and mission structure;
+- local persistence and resource transactions;
+- mobile-first UI with responsive behavior for different screen sizes;
+- single-file offline delivery without external runtime dependencies.
+
+### Engineering discipline
+
+- source split into modular parts before final build;
+- automated syntax checks through `node --check`;
+- Playwright-based interface validation and smoke tests;
+- versioned patch workflow for controlled iteration;
+- documentation-first development with design notes and roadmap tracking.
+
+---
+
+## Build and validation
+
+### Requirements
 
 - Python 3.11+
 - Node.js 20+
 - Git
-- Playwright для QA-скрипта в среде разработки
+- Playwright for UI automation
 
-Для установки Playwright (если нужно прогонять QA локально):
-
-```bash
-python3 -m pip install playwright
-python3 -m playwright install chromium
-```
-
-## Сборка из исходников
-
-Проект собирается из папки `parts/` командой `tools/build.py`.
+### Build the game
 
 ```bash
-python3 tools/build.py parts dist/TERRA2136_PLAY.html
+python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
 ```
 
-Если исходники ещё не разбиты из единого HTML, сначала выполняется split:
+### Rebuild from a split HTML file
 
 ```bash
 python3 tools/split.py TERRA2136_PLAY_v0.96.0.html parts/
 ```
 
-## Проверка проекта
-
-После сборки можно прогнать синтаксическую и интерфейсную валидацию:
+### Syntax validation
 
 ```bash
 python3 tools/check.py dist/TERRA2136_PLAY.html
+```
+
+### UI QA / smoke test
+
+```bash
+python3 -m pip install playwright
+python3 -m playwright install chromium
+
 python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
 python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports mobile
 ```
 
-Команда QA проверяет:
-
-- запуск основного меню;
-- читаемость интерфейса;
-- наличие очень мелкого текста и маленьких кнопок;
-- поведение в боевом сценарии;
-- корректность сборки на разных размерах экрана.
-
-## Как вносить правки
-
-1. Работайте в `parts/`, а не в собранном HTML.
-2. Держите изменения узкими и тематическими.
-3. Сначала изменяйте исходники, затем собирайте проект и прогоняйте QA.
-4. Для новых UI-правил используйте слои стилей в `css/`, а не переписывайте базовый слой без необходимости.
-5. Обновляйте номер версии только в корректном месте, как описано в правилах проекта.
-
-## Ключевые документы
-
-- `CLAUDE.md` — описание структуры проекта, команд, инвариантов и рабочей модели
-- `docs/ROADMAP.md` — дорожная карта релизов
-- `docs/CHANGELOG.md` — журнал изменений и релизных заметок
-- `docs/AUDIT.md` — аудит и наблюдения по проекту
-- `REWARDS_REVIEW.md` — экономическая модель и награды
-
-## Примечания по разработке
-
-- Игра полностью офлайн и существует как один самодостаточный файл без внешних загрузок.
-- Новые ассеты и изображения должны соответствовать внутренней политике проекта: встроенные ресурсы, без внешних ссылок.
-- Модификация баланса и прогрессии требует аккуратного изменения конфигурации и проверки совместимости сохранений.
-
-## Лицензия и статус репозитория
-
-Этот репозиторий является проектом разработки и внутренней рабочей копией игры TERRA 2136. Он предназначен для локальной сборки, проверки и доработки в среде разработчика.
+This validates menu flow, touch targets, overflow, visual readability, and battle startup stability.
 
 ---
 
-Если нужен именно игровой запуск, откройте `index.html` или собранный файл `TERRA2136_PLAY_v0.96.0.html`. Если нужен цикл разработки, используйте `tools/` и `qa/` для сборки и проверки проекта.
+## Roadmap
+
+| Version | Focus | Status |
+|---|---|---|
+| `0.95.0` | UI clarity, icons, layout polish | ✅ Complete |
+| `0.96.0` | Combat HUD improvements | ✅ Complete |
+| `0.97.0` | Reward progression tuning | 🔧 Planned |
+| `0.98.0` | Visual enhancement and map polish | 🗺️ Planned |
+| `1.0.0` | Release-ready milestone | 🎯 Target |
+
+See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for detailed milestones.
+
+---
+
+## Documentation
+
+- [`docs/ROADMAP.md`](./docs/ROADMAP.md) — project route and release planning
+- [`docs/CHANGELOG.md`](./docs/CHANGELOG.md) — version history and updates
+- [`docs/AUDIT.md`](./docs/AUDIT.md) — UX and technical audit
+- [`docs/REWARDS_REVIEW.md`](./docs/REWARDS_REVIEW.md) — economy and progression analysis
+- [`docs/RESEARCH_NOTES.md`](./docs/RESEARCH_NOTES.md) — research and design notes
+- [`CLAUDE.md`](./CLAUDE.md) — development rules and invariants
+- [`PROMPTS.md`](./PROMPTS.md) — task framing and execution patterns
+
+---
+
+## Portfolio angle
+
+This project is a strong portfolio example because it combines gameplay design and software engineering in a compact, demonstrable package:
+
+- playable and testable browser game;
+- clear code structure and build pipeline;
+- systems thinking across UI, progression, and logic;
+- attention to UX and readability;
+- automated verification instead of assumptions.
+
+It is especially suitable for discussing software craftsmanship, product iteration, and building a game from a focused prototype to a more polished experience.
+
+---
+
+<div align="center">
+
+### Explore the project
+
+[**▶ Open the game**](./index.html) · [**⬇ Playable build**](./TERRA2136_PLAY_v0.96.0.html) · [**🗺 Roadmap**](./docs/ROADMAP.md)
+
+<br>
+
+<strong>TERRA 2136 • Desert Stryke</strong>
+
+</div>
