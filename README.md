@@ -1,6 +1,6 @@
 <div align="right">
 
-[🇷🇺 Русская версия](./README.ru.md) <img src="./assets/language-arrow.svg" width="32" alt="переключить язык" /> [🇬🇧 English version](./README.md)
+[🇷🇺 Русская версия](./README.ru.md) <img src="./assets/language-arrow.svg" width="32" alt="switch language" /> [🇬🇧 English version](./README.md)
 
 </div>
 
@@ -33,6 +33,22 @@ A self-contained tactical RTS built in a single HTML file. The project focuses o
 
 ---
 
+## Current state
+
+The project is in active development and the current release milestone is `v0.95.0`.
+
+Recent work focuses on clarity, mobile usability, and a reliable player journey rather than simulation changes:
+
+- HQ flow is reordered to lead the player through the recommended next action first;
+- the bottom navigation uses a consistent icon set and active-state highlighting;
+- menu typography, touch targets, and reward/calendar layouts were tuned for phone readability;
+- the version string is centralized and kept consistent across UI surfaces;
+- the runtime remains deterministic and the save format remains compatible.
+
+This makes the project suitable as both a playable prototype and a portfolio-ready technical showcase.
+
+---
+
 ## Overview
 
 TERRA 2136 is a compact tactical strategy prototype set on a hostile Martian frontier. The game combines:
@@ -43,7 +59,7 @@ TERRA 2136 is a compact tactical strategy prototype set on a hostile Martian fro
 - mobile-first interface design and responsive layouts;
 - WebGL2 rendering with a single offline build.
 
-This project was designed as both a playable game and a technical showcase: it demonstrates how to structure a browser game with split source files, deterministic simulation logic, UI engineering, and QA validation within a single repository.
+This project was designed as both a playable game and a technical showcase: it demonstrates how to structure a browser game with split source files, deterministic simulation logic, UI engineering, and automated QA in a single offline artifact.
 
 ---
 
@@ -103,7 +119,8 @@ Then open <http://localhost:8000/>.
 ├── README.md                         # English project overview
 ├── README.ru.md                      # Russian project overview
 ├── .github/                          # GitHub workflow and repository config
-└── .claude/                          # local assistant/project guidance files
+├── .claude/                          # local assistant/project guidance files
+└── assets/                           # icons, illustrations, and shared media
 ```
 
 ---
@@ -177,6 +194,7 @@ This validates menu flow, touch targets, overflow, visual readability, and battl
 | `0.96.0` | Combat HUD improvements | 🔧 Planned |
 | `0.97.0` | Reward progression tuning | 🗺️ Planned |
 | `0.98.0` | Visual enhancement and map polish | 🗺️ Planned |
+| `0.99.0` | Styles and technical debt | 🗺️ Planned |
 | `1.0.0` | Release-ready milestone | 🎯 Target |
 
 See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for detailed milestones.
