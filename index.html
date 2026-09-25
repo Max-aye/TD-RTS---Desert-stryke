@@ -3,48 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#081b24">
+  <meta name="theme-color" content="#071b23">
   <meta name="description" content="TERRA 2136: Desert Stryke — мобильная тактическая стратегия в браузере.">
   <title>TERRA 2136 · Desert Stryke</title>
   <style>
-    :root { color-scheme: dark; --bg: #081820; --panel: #102c35; --line: #4e9b9b; --text: #eef5ef; --muted: #a3bec0; --gold: #e8c277; --cyan: #81d9d8; }
+    :root {
+      color-scheme: dark;
+      --bg: #071b23;
+      --deep: #041116;
+      --panel: rgba(8, 34, 42, .78);
+      --line: rgba(99, 206, 219, .32);
+      --line-bright: rgba(132, 223, 220, .76);
+      --text: #eef5ef;
+      --muted: #9bb9ba;
+      --cyan: #84dfdc;
+      --gold: #f4cc79;
+      --red: #ef977d;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; color: var(--text); background: radial-gradient(circle at 72% 18%, #1e5960 0, transparent 34%), linear-gradient(135deg, #06131b, var(--bg) 52%, #17333a); font: 16px/1.6 Georgia, 'Times New Roman', serif; }
-    main { width: min(1080px, calc(100% - 40px)); min-height: 100vh; margin: auto; display: grid; align-content: center; gap: 34px; padding: 58px 0; }
-    .eyebrow { color: var(--cyan); font: 700 11px/1.2 'Trebuchet MS', sans-serif; letter-spacing: .25em; text-transform: uppercase; }
-    h1 { max-width: 760px; margin: 12px 0 16px; font-size: clamp(42px, 8vw, 88px); font-weight: 400; line-height: .98; letter-spacing: .03em; }
-    h1 strong { color: var(--gold); font-weight: 700; }
-    .lead { max-width: 570px; margin: 0; color: var(--muted); font-size: 19px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
-    a { color: inherit; }
-    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 12px 22px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); background: #173b43; font: 700 13px 'Trebuchet MS', sans-serif; letter-spacing: .06em; text-decoration: none; }
-    .button.primary { border-color: #f2d995; color: #18282b; background: linear-gradient(#f5d890, #cba75d); }
-    .button:hover { filter: brightness(1.12); }
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    article { min-height: 145px; padding: 20px; border: 1px solid #4e9b9b66; border-radius: 10px; background: #0c252ed9; }
-    article b { display: block; margin-bottom: 8px; color: var(--gold); font: 700 14px 'Trebuchet MS', sans-serif; }
-    article p { margin: 0; color: var(--muted); font-size: 14px; }
-    footer { color: #75979b; font: 12px 'Trebuchet MS', sans-serif; }
-    @media (max-width: 650px) { main { width: min(100% - 28px, 520px); padding: 36px 0; gap: 24px; } .lead { font-size: 16px; } .features { grid-template-columns: 1fr; } article { min-height: auto; } .button { width: 100%; } }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      background: var(--deep);
+      font-family: "Trebuchet MS", system-ui, sans-serif;
+    }
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      content: "";
+      opacity: .075;
+      background: repeating-linear-gradient(0deg, transparent 0 3px, #b7ffff 4px, transparent 5px);
+      mix-blend-mode: screen;
+    }
+    .intro {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse at 69% 47%, rgba(37, 119, 119, .32), transparent 29%),
+        radial-gradient(ellipse at 50% 120%, rgba(218, 145, 74, .16), transparent 44%),
+        linear-gradient(135deg, #06141b 0%, var(--bg) 53%, #102e35 100%);
+    }
+    .intro::after {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      opacity: .2;
+      background-image: linear-gradient(rgba(132,223,220,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(132,223,220,.15) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(90deg, transparent, #000 25% 75%, transparent);
+      transform: perspective(520px) rotateX(57deg) translateY(28%);
+      transform-origin: bottom;
+    }
+    .frame {
+      position: relative;
+      width: min(1160px, calc(100% - 36px));
+      min-height: min(720px, calc(100vh - 36px));
+      padding: clamp(22px, 4vw, 50px);
+      border: 1px solid var(--line);
+      background: linear-gradient(120deg, rgba(8, 35, 43, .9), rgba(5, 20, 27, .56));
+      box-shadow: 0 0 0 7px rgba(3, 14, 19, .5), 0 28px 90px rgba(0,0,0,.42), inset 0 0 80px rgba(81, 190, 190, .08);
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+    }
+    .frame::before, .frame::after { position: absolute; width: 44px; height: 8px; content: ""; border-top: 2px solid var(--gold); opacity: .75; }
+    .frame::before { top: -1px; left: 23%; }
+    .frame::after { right: 10%; bottom: -1px; transform: rotate(180deg); }
+    .topbar, .bottombar { display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--muted); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    .signal { color: var(--cyan); }
+    .signal::before { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; content: ""; background: var(--cyan); box-shadow: 0 0 13px var(--cyan); animation: pulse 1.8s infinite; }
+    .main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); align-items: center; gap: clamp(28px, 8vw, 100px); min-height: 530px; }
+    .copy { position: relative; z-index: 1; }
+    .eyebrow { margin: 0 0 18px; color: var(--cyan); font-size: 11px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
+    h1 { max-width: 700px; margin: 0; font-size: clamp(48px, 9vw, 104px); font-weight: 400; line-height: .86; letter-spacing: .045em; text-shadow: 0 0 34px rgba(132,223,220,.16); }
+    h1 strong { display: block; color: var(--gold); font-weight: 700; }
+    .tagline { max-width: 470px; margin: 28px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 20px); line-height: 1.55; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    a { color: inherit; text-decoration: none; }
+    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 13px 22px; border: 1px solid var(--line-bright); color: var(--text); background: rgba(10, 48, 57, .62); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: .2s ease; }
+    .button:hover, .button:focus-visible { color: var(--deep); background: var(--cyan); box-shadow: 0 0 26px rgba(132,223,220,.3); transform: translateY(-2px); }
+    .button.primary { border-color: var(--gold); color: #192c2c; background: linear-gradient(135deg, #f4cc79, #c4934c); }
+    .button.primary:hover, .button.primary:focus-visible { background: #ffe2a2; }
+    .radar-wrap { position: relative; display: grid; place-items: center; min-height: 360px; }
+    .radar { position: relative; width: min(360px, 75vw); aspect-ratio: 1; border: 1px solid var(--line-bright); border-radius: 50%; background: radial-gradient(circle, rgba(71, 172, 163, .17) 0 2px, transparent 3px), repeating-radial-gradient(circle, transparent 0 29%, rgba(132,223,220,.24) 29.5% 30%, transparent 30.5% 100%); box-shadow: 0 0 60px rgba(72, 205, 193, .12), inset 0 0 50px rgba(72, 205, 193, .12); }
+    .radar::before { position: absolute; inset: 0; border-radius: 50%; content: ""; background: conic-gradient(from 0deg, transparent 0 76%, rgba(132,223,220,.36) 83%, transparent 91%); animation: sweep 5s linear infinite; }
+    .radar::after { position: absolute; inset: 12%; border: 1px solid rgba(132,223,220,.22); border-radius: 50%; content: ""; }
+    .crosshair { position: absolute; inset: 50% 0 auto; height: 1px; background: var(--line); }
+    .crosshair::after { position: absolute; top: -50%; left: 50%; width: 1px; height: min(360px, 75vw); content: ""; background: var(--line); }
+    .blip { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(244,204,121,.13), 0 0 18px var(--gold); animation: blink 2.2s infinite; }
+    .blip.one { top: 30%; left: 61%; } .blip.two { top: 67%; left: 33%; animation-delay: .8s; background: var(--red); box-shadow: 0 0 0 5px rgba(239,151,125,.12), 0 0 18px var(--red); }
+    .radar-label { position: absolute; bottom: 9%; left: 10%; color: var(--cyan); font-size: 10px; letter-spacing: .16em; }
+    .bottombar { border-top: 1px solid var(--line); padding-top: 18px; }
+    @keyframes sweep { to { transform: rotate(360deg); } } @keyframes pulse { 50% { opacity: .4; } } @keyframes blink { 50% { transform: scale(.55); opacity: .55; } }
+    @media (max-width: 720px) { .frame { width: calc(100% - 20px); min-height: calc(100vh - 20px); padding: 20px; } .main { grid-template-columns: 1fr; min-height: 0; gap: 8px; padding: 48px 0 30px; } .radar-wrap { min-height: 250px; order: -1; } .radar { width: min(260px, 62vw); } .crosshair::after { height: min(260px, 62vw); } .topbar span:last-child, .bottombar span:last-child { display: none; } h1 { font-size: clamp(48px, 16vw, 78px); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
-  <main>
-    <section>
-      <div class="eyebrow">Mars · 2136 · Tactical command</div>
-      <h1>TERRA <strong>2136</strong><br>Desert Stryke</h1>
-      <p class="lead">Мобильная стратегия о последнем рубеже человечества. Соберите отряд, удержите марсианские сектора и верните колонии связь.</p>
-      <div class="actions">
-        <a class="button primary" href="./TERRA2136_PLAY_v0.99.2.html">Запустить операцию</a>
-        <a class="button" href="https://github.com/Max-aye/TD-RTS---Desert-stryke">Исходный код</a>
+  <main class="intro">
+    <section class="frame" aria-label="TERRA 2136 command interface">
+      <header class="topbar"><span class="signal">Связь с командным центром</span><span>Сектор 07 · Mars / Terra</span></header>
+      <div class="main">
+        <section class="copy">
+          <p class="eyebrow">Tactical command interface · 2136</p>
+          <h1>TERRA <strong>2136</strong></h1>
+          <p class="tagline">Пыльный фронтир. Последний рубеж. Разверните оборону и удержите сигнал среди марсианской ночи.</p>
+          <nav class="actions" aria-label="Основная навигация">
+            <a class="button primary" href="./TERRA2136_PLAY_v0.99.2.html">Начать операцию</a>
+            <a class="button" href="https://github.com/Max-aye/TD-RTS---Desert-stryke">Архив проекта</a>
+          </nav>
+        </section>
+        <section class="radar-wrap" aria-label="Тактический радар">
+          <div class="radar"><span class="crosshair"></span><i class="blip one"></i><i class="blip two"></i><span class="radar-label">LIVE // THREAT MAP</span></div>
+        </section>
       </div>
+      <footer class="bottombar"><span>Офлайн-система · WebGL2 · без сети</span><span>Все каналы стабильны · PLAYABLE BUILD</span></footer>
     </section>
-    <section class="features" aria-label="Возможности игры">
-      <article><b>Тактическое поле</b><p>Маяки, линии атаки, строительство и поддержка отряда в реальном времени.</p></article>
-      <article><b>Кампания и ангар</b><p>Миссии, техника, модули, улучшения и несколько вариантов оснащения.</p></article>
-      <article><b>Автономный запуск</b><p>Один HTML-файл, адаптация под телефон и компьютер, без сборки и установки зависимостей.</p></article>
-    </section>
-    <footer>Playable build · v0.99.2</footer>
   </main>
 </body>
 </html>
