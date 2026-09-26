@@ -1,138 +1,114 @@
 <div align="right">
 
-[🇷🇺 Русская версия](./README.ru.md) · [🇬🇧 English](./README.md)
+[Русский](./README.ru.md) &nbsp; / &nbsp; **English**
 
 </div>
+
+<p align="center">
+  <img src="./docs/screen-battle.png" width="600" alt="TERRA 2136 — Desert Stryke. Live operation on a phone.">
+</p>
 
 <div align="center">
 
 # TERRA 2136 · Desert Stryke
 
-### Hold the line on a dead frontier — a whole RTS in one offline HTML file
+### Build the line. Take the initiative. Return stronger.
 
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.99.2-0A8F7A?style=for-the-badge" />
-  <img alt="Platform" src="https://img.shields.io/badge/platform-browser%20·%20offline-FFB703?style=for-the-badge" />
-  <img alt="Render" src="https://img.shields.io/badge/render-WebGL2-1E90FF?style=for-the-badge" />
-  <img alt="Build" src="https://img.shields.io/badge/build-single%20HTML-E76F51?style=for-the-badge" />
-  <img alt="Dependencies" src="https://img.shields.io/badge/runtime%20dependencies-0-8A6FE8?style=for-the-badge" />
-</p>
+A 3D **tower offense × RTS** with automated squads
+and collectible battle cards — in a single HTML file.
 
-<p>
-  <a href="./TERRA2136_PLAY_v0.99.2.html"><b>⬇ Download and play</b></a> ·
-  <a href="./index.html">▶ Launch page</a> ·
-  <a href="./docs/ROADMAP.md">🗺 Roadmap</a> ·
-  <a href="./docs/CHANGELOG.md">📓 Changelog</a>
-</p>
-
-<img src="./docs/screen-battle.png" width="270" alt="Battle on a phone" />
-<img src="./docs/screen-boot.png" width="270" alt="Loading screen" />
-
-<sub>Left: a live operation on a 390 px phone. Right: the boot sequence.</sub>
+[**Game build ↗**](./TERRA2136_PLAY_v0.99.2.html) &nbsp; · &nbsp; [Quick start](#quick-start) &nbsp; · &nbsp; [Arsenal](#arsenal) &nbsp; · &nbsp; [Development](#development)
 
 </div>
 
----
+<table width="100%">
+  <tr>
+    <td width="25%" align="center"><h3>50</h3>campaign operations</td>
+    <td width="25%" align="center"><h3>82</h3>battle cards</td>
+    <td width="25%" align="center"><h3>T1–T6</h3>battle upgrades</td>
+    <td width="25%" align="center"><h3>30</h3>days of rewards</td>
+  </tr>
+</table>
 
-## One file. No server. No network.
+## Tactics over micromanagement
 
-Download `TERRA2136_PLAY_v0.99.2.html`, open it, play. That is the whole install.
+Build production and defenses along a shared route. Three posts with three building pads each, automated reinforcements and a central beacon turn every battle into a contest of timing and position.
 
-No backend, no account, no CDN, no analytics, no build step for the player. Every model,
-texture, icon and sound cue is embedded in the document. Put it on a phone in airplane
-mode and it still runs — **43 MB of game in a single `.html`**.
+Choose a deck of **6 cards and 2 support abilities**. Protect headquarters, break through defenses or evacuate colonists — each operation changes the objective.
 
-```
-open TERRA2136_PLAY_v0.99.2.html      # that's it
-```
+<p align="center"><strong>Deck → deploy → battle → rewards → upgrades</strong></p>
 
-## The game
+## Every sortie strengthens your arsenal
 
-A tower-offense / RTS hybrid on a hostile Martian frontier. You do not command units
-directly — you build the machine that produces them, and the line holds or it does not.
+- **Campaign and sorties:** 50 main operations, resource missions, a training ground, weekly operations and expedition routes.
+- **Collection and progression:** four card rarities, experience, ranks, specializations, modules and saved fittings.
+- **Rewards through play:** battlefield salvage, supply containers, tasks and a 30-day reward calendar.
+- **Headquarters and hangar:** deck building, model inspection, upgrade planning and after-action reports.
 
-- **Three posts, one front.** Pick a post, build a producer, upgrade it under fire.
-  Every card is a building that keeps sending troops down the road.
-- **The beacon pays.** Hold the centre and it funds you at +6 credits a second.
-  Lose it and the counter-attack is already walking.
-- **Real decisions, not menus.** Six deck slots, two support abilities, six upgrade
-  tiers per structure, and a fixed population cap — you cannot have everything.
-- **50 campaign operations**, 82 cards across four rarities, expeditions, a 30-day
-  calendar, modules, technologies, field salvage and a terminal.
-- **Built for a phone first.** 390 px portrait is the design target, not an afterthought:
-  10 px text floor, 44 px touch targets, adaptive resolution under load.
+<a id="arsenal"></a>
 
-## Under the hood
+## Build your arsenal
 
-This is also an engineering exercise, and the constraints are the interesting part.
+Infantry, armor, aircraft and defensive structures. **Aegis · Forge · Kairos** — three faction sets for your front line.
 
-| | |
-|---|---|
-| **Deterministic simulation** | Fixed 20 Hz step, seeded RNG, no wall-clock reads in gameplay. The same seed and the same commands always produce the same match — which is what makes the save format and the automated campaign gate possible. |
-| **Render is never authoritative** | Presentation modules may read simulation state, never write it. Body lean, bank, detail selection and contact shadows all live on render-side actors. |
-| **Transactional economy** | The wallet only changes through `TerraProgress` candidate → write → accept. The UI never grants anything to itself. |
-| **Versioned policies, not rewrites** | Crate pools and the terminal payout table are versioned, and saves carry which version paid them. A five-year-old profile still validates receipt by receipt. |
-| **Split sources, rebuilt output** | Nobody edits the 43 MB file. It is split into `parts/`, edited there, and rebuilt — with a byte-identical round trip as the proof the split is lossless. |
+<a id="quick-start"></a>
 
-## Toolchain
+## Start playing
 
-The repository ships the tools it is developed with. Every one of them prints a verdict.
+1. Open the [HTML build](./TERRA2136_PLAY_v0.99.2.html) and select **Download raw file**.
+2. Open the downloaded file in a browser with **WebGL 2**.
+3. Choose a deck and launch your first operation.
 
-| Command | What it proves |
-|---|---|
-| `python3 tools/split.py GAME.html parts/` | Break the build into editable sources |
-| `python3 tools/build.py parts/ dist/GAME.html --verify` | Reassemble; `--verify` asserts a byte-identical round trip |
-| `python3 tools/patch.py patches/vX_Y_Z parts/` | Apply a versioned patch set — all of it or none of it, and idempotent |
-| `python3 tools/check.py GAME.html` | `node --check` over every embedded script block |
-| `python3 qa/qa.py GAME.html --out qa-out` | Headless tour of menu and battle: broken images, overflow, tiny text, small tap targets, dock stability |
-| `python3 qa/campaign.py GAME.html` | Plays M01–M05 through the real simulation and fails on any console error |
-| `python3 qa/perf.py GAME.html` | CPU cost per simulated tick in a 220-point battle, compared against a stored baseline |
-| `python3 tools/economy.py` | Where a new player's income actually comes from in week one |
-| `python3 tools/cssdedupe.py parts/css/00-base.css` | Finds style blocks a later rule provably overrides |
+**No installation, account or separate server.** All game resources are included. On Android, open the HTML in a browser rather than a document viewer. The game interface is in Russian.
 
-Patch sets are the unit of change. Each one names the problem it fixes, matches its
-anchors exactly, and refuses to write anything if a single anchor moved — so a patch
-either lands whole or tells you why it cannot.
+<details>
+<summary><strong>Controls and saves</strong></summary>
 
-## Repository layout
+**Phone:** tap a pad or structure to select it; drag to pan; pinch to zoom. Select a support ability, then tap a point on the field.
 
-```
-TERRA2136_PLAY_v0.99.2.html   the game — one file, offline
-index.html                    landing page
-parts/                        editable sources (generated by split.py, not committed)
-patches/vX_Y_Z/               versioned patch sets, one folder per release
-tools/                        split, build, patch, check, economy, cssdedupe
-qa/                           headless QA, campaign gate, performance gauge
-docs/                         roadmap, changelog, audit, assets, research notes
-CLAUDE.md                     project rules: source map, invariants, review standards
-```
+| Action | Keyboard / mouse |
+| --- | --- |
+| Select · pan · zoom | Left click · drag · wheel |
+| Select a post · open construction | `1` `2` `3` · `B` |
+| Card in the open construction panel | `Q` `W` `E` `R` `T` `Y` |
+| Focus the post · show objectives | `F` · `O` |
+| Pause · cancel / close | `Space` · `Esc` |
 
-## Status
+Letter shortcuts use an English keyboard layout.
 
-**v0.99.2.** Every roadmap milestone up to 1.0.0 is closed and measured: battle HUD
-readability, unit model detail and motion, reward economy, collection art, style and
-tech debt, terminal policy, boot sequence.
+Progress is stored locally. Settings include **JSON export and import**. Import replaces the current profile with the selected snapshot — export a backup first.
 
-One release criterion remains, and it needs hardware rather than code: **30+ FPS in a
-220-point battle on a real phone.** This repository's CI renders on SwiftShader without
-a GPU, so no number produced here can answer it. The procedure is in
-[`docs/ROADMAP.md`](./docs/ROADMAP.md).
+For WebGL errors, check browser hardware acceleration. On slower devices, lower quality and battle size. Local opening and storage on Android depend on the browser.
 
-## Requirements
+</details>
 
-Playing needs a WebGL2 browser and nothing else. Developing needs Python 3.11+, Node 20+,
-and Playwright for the QA scripts:
+<a id="development"></a>
+
+## Development
+
+**JavaScript · HTML/CSS · custom WebGL 2 renderer.**
+Fixed-step simulation, embedded resources, adaptive resolution, and portrait and landscape layouts.
+
+[Build and project structure](./docs/presentation/DEVELOPMENT.md) · [Roadmap](./docs/ROADMAP.md) · [Changelog](./docs/CHANGELOG.md) · [Project rules](./CLAUDE.md)
+
+### Toolchain
 
 ```bash
-python3 -m pip install playwright && python3 -m playwright install chromium
+python3 tools/split.py TERRA2136_PLAY_v0.99.2.html parts/
+python3 tools/build.py parts/ dist/TERRA2136_PLAY.html
+python3 tools/check.py dist/TERRA2136_PLAY.html
+python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
+python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --battle-only --viewports mobile
 ```
+
+On Windows, replace `python3` with `py`.
 
 ---
 
 <div align="center">
 
-**[⬇ Download the game](./TERRA2136_PLAY_v0.99.2.html)** · **[🗺 Roadmap](./docs/ROADMAP.md)** · **[📓 Changelog](./docs/CHANGELOG.md)**
+**One file. Your front line. Your tactics.**
 
-<sub>Development repository and working copy of TERRA 2136 · Desert Stryke.</sub>
+Project by **[Max-aye](https://github.com/Max-aye)** · [Report an issue](https://github.com/Max-aye/TD-RTS---Desert-stryke/issues)
 
 </div>
