@@ -23,13 +23,25 @@ A 3D **tower offense × RTS** with automated squads and collectible battle cards
   <img src="./docs/media/badge-status.svg" height="28" alt="IN DEVELOPMENT">
 </p>
 
-[**Play the build ↗**](./TERRA2136_PLAY_v0.99.2.html) · [Quick start](#quick-start) · [Combat](#combat-loop) · [Arsenal](#arsenal) · [Development](#development)
-
 </div>
 
 <table width="100%">
 <tr><td width="25%" align="center"><h3>50</h3>campaign operations</td><td width="25%" align="center"><h3>82</h3>battle cards</td><td width="25%" align="center"><h3>T1–T6</h3>upgrade tiers</td><td width="25%" align="center"><h3>30</h3>reward days</td></tr>
 </table>
+
+---
+
+## 🚀 Quick navigation
+
+| | | |
+|---|---|---|
+| **[▶ Play](#play)** | Download and launch | Start in 30 seconds |
+| **[⚔️ Combat](#combat-loop)** | How battles work | Tactics and strategy |
+| **[🎮 Arsenal](#arsenal)** | Units and models | Roles and factions |
+| **[📈 Progression](#progression)** | Growth and upgrades | Collections and ranks |
+| **[📚 Docs](#documentation)** | Development guides | Technical details |
+
+---
 
 ## A strategy game about the front line
 
@@ -37,72 +49,9 @@ TERRA 2136 is built around a simple question: **where should your next resource 
 
 The result is a readable mobile RTS with tower-offense pressure: every structure changes the flow of the battlefield, while every operation asks for a different balance between tempo, economy and survival.
 
-<a id="combat-loop"></a>
+<a id="play"></a>
 
-## How combat works
-
-1. **Build a deck.** Select 6 battle cards and 2 support abilities from your collection.
-2. **Choose a post.** Three posts share one route; each post has three construction pads.
-3. **Deploy production.** Cards become producers, defenses or tactical tools that shape your lane.
-4. **Hold the line.** Automated reinforcements move toward the enemy. Protect the headquarters and contest the central beacon.
-5. **Control the tempo.** The beacon generates credits while held; spending too early can leave a gap in the line, while saving too long can surrender the initiative.
-6. **Complete the objective.** Hold, break through, escort or evacuate depending on the operation.
-7. **Return stronger.** Collect salvage and rewards, improve the collection, tune fittings and prepare the next sortie.
-
-### The tactical layer
-
-- **Three posts, one front:** switching attention between posts matters more than clicking individual units.
-- **Three pads per post:** use them to combine production, defense and support rather than stacking one answer everywhere.
-- **Automated squads:** the challenge is composition, timing and positioning; the battle remains legible on a phone.
-- **Central beacon:** holding the centre funds the push at **+6 credits per second**; losing it accelerates the counter-attack.
-- **Population cap:** powerful formations compete for limited space, so a perfect deck is impossible by design.
-- **Support abilities:** save them for a breakthrough, emergency defense or a decisive point on the route.
-
-## Unit and model variety
-
-The arsenal combines several battlefield roles rather than a single universal unit:
-
-| Role | Battlefield job | Example |
-|---|---|---|
-| Infantry | flexible presence, lane pressure and reliable numbers | automated squad production |
-| Armor | durable assault and siege pressure | Siege armor / Pioneer tank |
-| Aircraft | fast response and interception | Storm interceptor |
-| Defense | protects a post and controls an approach | Aegis autocannon |
-| Defensive support | reinforces a position or denies a push | Prism ward |
-
-Models are not only menu icons: the build includes dedicated 3D unit presentation, faction styling, portraits and hangar inspection. Detail selection adapts to the unit’s screen size, while texture filtering, movement presentation and contact shadows improve readability during a battle.
-
-The collection is organized around three faction sets — **Aegis, Forge and Kairos** — with four card rarities. Cards can be developed through experience, ranks, specializations, modules and saved fittings, giving the same role room for different builds.
-
-<a id="arsenal"></a>
-
-## Arsenal showcase
-
-<table width="100%"><tr><td width="50%" align="center"><img src="./docs/media/arsenal-armor.webp" width="220" alt="Siege armor"><br><strong>Siege armor</strong><br><sub>ARMOR</sub></td><td width="50%" align="center"><img src="./docs/media/arsenal-turret.webp" width="220" alt="Autocannon"><br><strong>Autocannon</strong><br><sub>DEFENSE</sub></td></tr><tr><td width="50%" align="center"><img src="./docs/media/arsenal-interceptor.webp" width="220" alt="Interceptor"><br><strong>Interceptor</strong><br><sub>AIRCRAFT</sub></td><td width="50%" align="center"><img src="./docs/media/arsenal-ward.webp" width="220" alt="Defensive ward"><br><strong>Defensive ward</strong><br><sub>DEFENSIVE SUPPORT</sub></td></tr></table>
-
-## Progression and upgrades
-
-Progression is designed to make sorties feed the next decision:
-
-- **Card collection:** 82 cards, four rarities and faction sets create different deck directions.
-- **Experience and ranks:** repeated use develops the cards you actually play.
-- **Specializations:** tune a card toward its preferred tactical role instead of treating every copy as identical.
-- **Modules and fittings:** save configurations for different operations and switch from a damage, defense or economy plan.
-- **Structure upgrades:** battle upgrades run from **T1 to T6**, so a post can evolve during a match instead of remaining static.
-- **Rewards:** salvage, supply containers, tasks and a 30-day calendar connect campaign sorties with long-term growth.
-- **Local profile:** progress is stored locally, with JSON export/import for backup and transfer.
-
-## The world of TERRA 2136
-
-<table width="100%"><tr><td width="50%" align="center"><a href="./docs/media/ingame-menu.webp"><img src="./docs/media/ingame-menu.webp" width="600" alt="A domed colony in the mountains — headquarters artwork."></a><br><sub>Headquarters</sub></td><td width="50%" align="center"><a href="./docs/media/ingame-expedition.webp"><img src="./docs/media/ingame-expedition.webp" width="600" alt="An expedition beside mineral deposits — in-game artwork."></a><br><sub>Expedition</sub></td></tr></table>
-
-## Campaign and game modes
-
-The game includes **50 main operations**, resource missions, a training ground, weekly operations and expedition routes. Objectives change the value of your deck: an aggressive breakthrough, a defensive hold and an evacuation demand different production timing and different use of support abilities.
-
-<a id="quick-start"></a>
-
-## Start playing
+## ▶ Start playing
 
 1. Open the [HTML build](./TERRA2136_PLAY_v0.99.2.html) and select **Download raw file**.
 2. Open it in a browser with **WebGL 2**.
@@ -122,15 +71,135 @@ The game includes **50 main operations**, resource missions, a training ground, 
 | Focus the post · show objectives | `F` · `O` |
 | Pause · cancel / close | `Space` · `Esc` |
 
+Progress is stored locally. Settings include **JSON export and import**. On WebGL errors, check browser hardware acceleration.
+
 </details>
 
-<a id="development"></a>
+<a id="combat-loop"></a>
 
-## Development
+## ⚔️ Combat mechanics
 
-**JavaScript · HTML/CSS · custom WebGL 2 renderer.** Fixed-step simulation, embedded resources, adaptive resolution and portrait/landscape layouts.
+### How battles work
 
-[Build and project structure](./docs/presentation/DEVELOPMENT.md) · [Roadmap](./docs/ROADMAP.md) · [Changelog](./docs/CHANGELOG.md) · [Media credits](./docs/presentation/MEDIA.md) · [Project rules](./CLAUDE.md)
+1. **Build a deck** — Select 6 battle cards and 2 support abilities from your collection.
+2. **Choose a post** — Three posts share one route; each post has three construction pads.
+3. **Deploy production** — Cards become producers, defenses or tactical tools that shape your lane.
+4. **Hold the line** — Automated reinforcements move toward the enemy. Protect the headquarters and contest the central beacon.
+5. **Control the tempo** — The beacon generates credits while held; spending too early can leave a gap, while saving too long surrenders the initiative.
+6. **Complete the objective** — Hold, break through, escort or evacuate depending on the operation.
+7. **Return stronger** — Collect salvage and rewards, improve the collection, tune fittings and prepare the next sortie.
+
+### The tactical layer
+
+| Mechanic | Effect | Strategy |
+|---|---|---|
+| **Three posts, one front** | Switching attention matters more than unit micromanagement | Control the route, not individual squads |
+| **Three pads per post** | Combine production, defense and support roles | Asymmetric builds beat cookie-cutter setups |
+| **Automated squads** | Units move and fight without per-unit commands | Focus on composition, timing and positioning |
+| **Central beacon** | Holding the centre grants **+6 credits per second** | Beacon control decides the pace of engagement |
+| **Population cap** | Powerful formations compete for limited space | Deck variety is forced by design constraints |
+| **Support abilities** | Two abilities per operation, used tactically | Save them for breakthrough, defense or siege |
+
+<a id="arsenal"></a>
+
+## 🎮 Arsenal and units
+
+### Unit roles and factions
+
+The battlefield is organized around roles, not copy-paste units:
+
+| Role | Task | Example |
+|---|---|---|
+| 🪖 **Infantry** | Flexible presence, lane pressure and reliable numbers | Automated squad production |
+| 🚗 **Armor** | Durable assault and siege pressure | Siege armor / Pioneer tank |
+| 🛩️ **Aircraft** | Fast response and interception | Storm interceptor |
+| 🔫 **Defense** | Protect posts and control approaches | Aegis autocannon |
+| 🛡️ **Support** | Reinforce positions and deny pushes | Prism ward |
+
+Three faction sets — **Aegis**, **Forge** and **Kairos** — add visual identity and strategic flavor to each deck type.
+
+### Collection and models
+
+Models are not just menu icons: the build includes dedicated 3D unit presentation, faction styling, portraits and hangar inspection. Detail selection adapts to screen size, texture filtering improves legibility, and movement presentation + contact shadows enhance the battlefield clarity.
+
+<table width="100%">
+<tr>
+  <td width="50%" align="center">
+    <img src="./docs/media/arsenal-armor.webp" width="220" alt="Siege armor"><br>
+    <strong>Siege armor</strong><br><sub>🔄 ARMOR</sub>
+  </td>
+  <td width="50%" align="center">
+    <img src="./docs/media/arsenal-turret.webp" width="220" alt="Autocannon"><br>
+    <strong>Autocannon</strong><br><sub>🔫 DEFENSE</sub>
+  </td>
+</tr>
+<tr>
+  <td width="50%" align="center">
+    <img src="./docs/media/arsenal-interceptor.webp" width="220" alt="Interceptor"><br>
+    <strong>Interceptor</strong><br><sub>🛩️ AIRCRAFT</sub>
+  </td>
+  <td width="50%" align="center">
+    <img src="./docs/media/arsenal-ward.webp" width="220" alt="Defensive ward"><br>
+    <strong>Defensive ward</strong><br><sub>🛡️ SUPPORT</sub>
+  </td>
+</tr>
+</table>
+
+### In-game world
+
+<table width="100%">
+<tr>
+  <td width="50%" align="center">
+    <a href="./docs/media/ingame-menu.webp">
+      <img src="./docs/media/ingame-menu.webp" width="600" alt="A domed colony in the mountains — headquarters artwork.">
+    </a>
+    <br><sub>🏛️ Headquarters</sub>
+  </td>
+  <td width="50%" align="center">
+    <a href="./docs/media/ingame-expedition.webp">
+      <img src="./docs/media/ingame-expedition.webp" width="600" alt="An expedition beside mineral deposits — in-game artwork.">
+    </a>
+    <br><sub>🗺️ Expedition</sub>
+  </td>
+</tr>
+</table>
+
+<a id="progression"></a>
+
+## 📈 Progression and upgrades
+
+### Leveling your arsenal
+
+Progression is designed to make sorties feed the next decision:
+
+- 📚 **Card collection** — 82 cards, four rarities and faction sets create different deck directions.
+- ⭐ **Experience and ranks** — Repeated use develops the cards you actually play.
+- 🎯 **Specializations** — Tune a card toward its preferred role instead of treating copies as identical.
+- 🔧 **Modules and fittings** — Save configurations for different operations and switch between damage, defense or economy plans.
+- 🏗️ **Structure upgrades** — Battle upgrades run from **T1 to T6**, so a post evolves during a match instead of remaining static.
+- 🎁 **Rewards** — Salvage, supply containers, tasks and a 30-day calendar connect campaign sorties with long-term growth.
+- 💾 **Local profile** — Progress is stored locally, with JSON export/import for backup and transfer.
+
+### Campaign and game modes
+
+The game includes **50 main operations**, resource missions, a training ground, weekly operations and expedition routes. Objectives change the value of your deck:
+
+| Mode | Objective | Strategy |
+|---|---|---|
+| 🛡️ **Defend** | Protect the headquarters from waves | Economy-focused deck, sustained output |
+| ⚔️ **Breakthrough** | Break through enemy positions | Aggressive, tempo-driven approach |
+| 🚚 **Escort** | Protect a convoy or unit | Timing and positioning critical |
+| 🏃 **Evacuate** | Extract colonists from danger | Mixed defense and offensive support |
+
+---
+
+<a id="documentation"></a>
+
+## 📚 Documentation and development
+
+**Technology stack:** JavaScript · HTML/CSS · custom WebGL 2 renderer · Fixed-step simulation · Embedded resources · Adaptive resolution
+
+### Getting started
 
 ```bash
 python3 tools/split.py TERRA2136_PLAY_v0.99.2.html parts/
@@ -139,6 +208,22 @@ python3 tools/check.py dist/TERRA2136_PLAY.html
 python3 qa/qa.py dist/TERRA2136_PLAY.html --out qa-out --no-battle
 ```
 
+### Project guides
+
+| Document | Purpose |
+|---|---|
+| [📄 Build and project structure](./docs/presentation/DEVELOPMENT.md) | Technical architecture and source organization |
+| [🗺️ Roadmap](./docs/ROADMAP.md) | Version milestones and release criteria |
+| [📝 Changelog](./docs/CHANGELOG.md) | Version history and feature changes |
+| [🎨 Media credits](./docs/presentation/MEDIA.md) | Asset sources and attributions |
+| [📋 Project rules](./CLAUDE.md) | Development guidelines and invariants |
+
 ---
 
-<div align="center"><strong>One file. Your front line. Your tactics.</strong><br>Project by <a href="https://github.com/Max-aye">Max-aye</a> · <a href="https://github.com/Max-aye/TD-RTS---Desert-stryke/issues">Report an issue</a></div>
+<div align="center">
+
+### One file. Your front line. Your tactics.
+
+Project by [Max-aye](https://github.com/Max-aye) · [Report an issue](https://github.com/Max-aye/TD-RTS---Desert-stryke/issues) · [Play now](./TERRA2136_PLAY_v0.99.2.html)
+
+</div>
